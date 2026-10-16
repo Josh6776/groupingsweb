@@ -3,50 +3,190 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Groupings</title>
-  <meta name="description" content="Groupings — a word grouping puzzle game for iOS.">
-  <style>
-    :root {
-      --bg: #0e1116;
-      --fg: #f2f4f8;
-      --muted: #9aa4b2;
-      --accent: #5b8cff;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    main { max-width: 540px; }
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      margin: 0 0 0.25em;
-      letter-spacing: -0.02em;
-    }
-    p { color: var(--muted); font-size: 1.15rem; line-height: 1.6; margin: 0; }
-    .badge {
-      display: inline-block;
-      margin-top: 1.75rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.95rem;
-    }
-  </style>
+  <title>Groupings — The honest daily word puzzle</title>
+  <meta name="description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day — plus Easy to Expert practice, Blitz, Endless and global leaderboards. Free on the App Store.">
+  <link rel="canonical" href="/">
+  <link rel="alternate" hreflang="en" href="/">
+  <link rel="alternate" hreflang="ja" href="/ja/">
+  <meta property="og:title" content="Groupings — The honest daily word puzzle">
+  <meta property="og:description" content="One honest puzzle a day. Can you top the leaderboard?">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/screens-uk/Groupings-Panel-01-home.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <main>
-    <h1>Groupings</h1>
-    <p>A word grouping puzzle game. Website coming soon.</p>
-    <span class="badge">Coming soon</span>
-  </main>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/img/app-icon.png" alt="Groupings icon"> Groupings</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+        <a class="lang-toggle" href="ja/index.html" lang="ja">日本語</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="hero-icon" src="assets/img/app-icon.png" alt="Groupings app icon">
+      <h1>One <span class="accent">honest</span> puzzle a day</h1>
+      <p class="lead">The honest daily word puzzle. Just you and the grid — simple as that. Can you top the leaderboard?</p>
+      <div class="hero-cta">
+        <a class="badge-appstore" href="https://apps.apple.com/app/groupings/idXXXXXXXXXX" aria-label="Download Groupings on the App Store">
+          <img src="assets/img/appstore-badge.svg" alt="Download on the App Store">
+        </a>
+      </div>
+      <div class="hero-shot">
+        <img src="assets/img/screens-uk/Groupings-Panel-01-home.png" alt="Groupings home screen showing the daily puzzle" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="feature">
+        <div class="feature-media"><img src="assets/img/screens-uk/Groupings-Panel-02-daily.png" alt="The daily puzzle grid" loading="lazy"></div>
+        <div class="feature-body">
+          <span class="tag tag-daily">The Daily Puzzle</span>
+          <h2>A fresh grid, every day</h2>
+          <p>Each day brings a brand-new daily puzzle. Sort sixteen words into four hidden groups of four. Puzzles rotate every day and no two are ever the same.</p>
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-media"><img src="assets/img/screens-uk/Groupings-Panel-04-trap.png" alt="A puzzle with trap tiles" loading="lazy"></div>
+        <div class="feature-body">
+          <span class="tag tag-levels">Easy · Medium · Hard · Expert</span>
+          <h2>Play at your level</h2>
+          <p>New to grouping puzzles? Warm up on Easy, then climb through Medium, Hard and Expert as you sharpen up. And keep an eye out for the traps — they're probably not what you think. 😉</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-media"><img src="assets/img/screens-uk/Groupings-Panel-05-blitz.png" alt="Blitz mode with a countdown timer" loading="lazy"></div>
+        <div class="feature-body">
+          <span class="tag tag-blitz">Blitz</span>
+          <h2>Think you're fast?</h2>
+          <p>Race the clock in Blitz. Get a group right and earn more time; get it wrong and watch the seconds slip away. How many can you clear before time runs out?</p>
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-media"><img src="assets/img/screens-uk/Groupings-Panel-06-endless.png" alt="Endless mode" loading="lazy"></div>
+        <div class="feature-body">
+          <span class="tag tag-endless">Endless</span>
+          <h2>It goes on, and on, and on</h2>
+          <p>One grid after another with no finish line. Keep your lives alive and see just how far you can go.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-media"><img src="assets/img/screens-uk/Groupings-Panel-07-leaderboard.png" alt="The global leaderboard" loading="lazy"></div>
+        <div class="feature-body">
+          <span class="tag tag-board">The Leaderboard</span>
+          <h2>Claim the top spot</h2>
+          <p>See where you rank. Blitz and Endless players compete to be crowned champion — but can you reach the top spot, and more importantly, can you stay there?</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODES GRID -->
+  <section class="section section-soft">
+    <div class="wrap center">
+      <p class="eyebrow">Something for everyone</p>
+      <h2>Five ways to play</h2>
+      <p class="lead">From a relaxed daily solve to a frantic race against the clock.</p>
+      <div class="grid" style="margin-top:36px; text-align:left;">
+        <div class="mode-card"><span class="dot" style="background:var(--indigo)"></span><h3>Daily</h3><p>One honest puzzle a day. Build your streak.</p></div>
+        <div class="mode-card"><span class="dot" style="background:var(--green)"></span><h3>Practice</h3><p>Easy, Medium, Hard and Expert grids to train on.</p></div>
+        <div class="mode-card"><span class="dot" style="background:var(--orange)"></span><h3>Blitz</h3><p>Beat the clock. Right answers buy you time.</p></div>
+        <div class="mode-card"><span class="dot" style="background:var(--blue)"></span><h3>Endless</h3><p>How long can you last on your lives?</p></div>
+        <div class="mode-card"><span class="dot" style="background:var(--purple)"></span><h3>Leaderboard</h3><p>Compete globally and defend your crown.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="wrap center">
+      <p class="eyebrow">Take a look</p>
+      <h2>Inside Groupings</h2>
+    </div>
+    <div class="gallery">
+      <img src="assets/img/screens-uk/Groupings-Panel-01-home.png" alt="Home screen" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-02-daily.png" alt="Daily puzzle" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-03-share.png" alt="Share your result" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-04-trap.png" alt="Trap tiles" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-05-blitz.png" alt="Blitz mode" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-06-endless.png" alt="Endless mode" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-07-leaderboard.png" alt="Leaderboard" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-08-guesses.png" alt="Guesses" loading="lazy">
+      <img src="assets/img/screens-uk/Groupings-Panel-09-hearts.png" alt="Hearts and lives" loading="lazy">
+    </div>
+  </section>
+
+  <!-- PLUS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="plus">
+        <p class="eyebrow" style="color:#fff; opacity:.85">Groupings Plus</p>
+        <h2>Play your way, ad-free</h2>
+        <p>A single one-time purchase — no subscriptions.</p>
+        <div class="plus-perks">
+          <span>✦ No ads, ever</span>
+          <span>✦ Unlimited lives</span>
+          <span>✦ Restores across your devices</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-soft cta-band">
+    <div class="wrap">
+      <h2>Ready to play?</h2>
+      <p class="lead">Free to download. One honest puzzle is waiting.</p>
+      <div style="margin-top:22px;">
+        <a class="badge-appstore" href="https://apps.apple.com/app/groupings/idXXXXXXXXXX" aria-label="Download Groupings on the App Store">
+          <img src="assets/img/appstore-badge.svg" alt="Download on the App Store">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/img/app-icon.png" alt=""> Groupings</a>
+        <small>© 2026 Josh Bradley. Groupings is a word grouping puzzle for iPhone.<br>Made in the United Kingdom.</small>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+        <a href="ja/index.html" lang="ja">日本語</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
