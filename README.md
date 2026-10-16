@@ -31,8 +31,6 @@ python3 -m http.server 8000
 
 ## To do before launch
 
-- Replace the App Store placeholder link `idXXXXXXXXXX` with the real App ID.
-- Add the custom domain (CNAME file) once DNS is pointed.
 - Have a native speaker review the Japanese legal pages.
 
 ## Deployment
