@@ -84,7 +84,7 @@ img { max-width: 100%; display: block; }
 .accent { color: var(--indigo); }
 
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-.section { padding: clamp(56px, 9vw, 110px) 0; }
+.section { padding: clamp(40px, 6vw, 76px) 0; }
 .section-soft { background: var(--bg-soft); }
 .center { text-align: center; }
 .eyebrow {
@@ -134,20 +134,20 @@ img { max-width: 100%; display: block; }
 .nav-toggle svg { width: 26px; height: 26px; }
 
 /* ---- Hero ---- */
-.hero { background: var(--bg-hero); padding: clamp(48px, 8vw, 92px) 0 clamp(40px, 6vw, 72px); text-align: center; }
-.hero-icon { width: 84px; height: 84px; border-radius: 20px; margin: 0 auto 26px; box-shadow: var(--shadow); }
+.hero { background: var(--bg-hero); padding: clamp(40px, 7vw, 76px) 0 clamp(28px, 5vw, 52px); text-align: center; }
+.hero-icon { width: 80px; height: 80px; border-radius: 20px; margin: 0 auto 22px; box-shadow: var(--shadow); }
 .hero h1 { max-width: 14ch; margin-left: auto; margin-right: auto; }
-.hero .lead { margin: 1rem auto 1.8rem; }
+.hero .lead { margin: 1rem auto 1.6rem; }
 .hero-cta { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.hero-shot { margin: 46px auto 0; max-width: 340px; }
+.hero-shot { margin: 30px auto 0; max-width: 288px; }
 .hero-shot img { border-radius: 26px; }
 
 /* ---- Feature rows ---- */
-.feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 72px); align-items: center; }
-.feature + .feature { margin-top: clamp(56px, 8vw, 96px); }
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 52px); align-items: center; }
+.feature + .feature { margin-top: clamp(28px, 4vw, 52px); }
 .feature.reverse .feature-media { order: 2; }
 .feature-media { display: flex; justify-content: center; }
-.feature-media img { max-width: 320px; border-radius: 24px; filter: drop-shadow(0 18px 40px rgba(44,38,92,.16)); }
+.feature-media img { max-width: 258px; border-radius: 24px; filter: drop-shadow(0 16px 34px rgba(44,38,92,.16)); }
 .feature-body .tag { display: inline-block; font-family: var(--font-head); font-weight: 600; font-size: .8rem; padding: .3rem .7rem; border-radius: 999px; margin-bottom: .9rem; }
 .tag-daily   { color: var(--indigo); background: color-mix(in srgb, var(--indigo) 14%, transparent); }
 .tag-levels  { color: var(--green);  background: color-mix(in srgb, var(--green) 15%, transparent); }
@@ -161,7 +161,8 @@ img { max-width: 100%; display: block; }
 .phone img { border-radius: 32px; display:block; }
 
 /* ---- Modes grid ---- */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+.grid > * { flex: 0 1 300px; max-width: 340px; }
 .mode-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
 .mode-card .dot { width: 14px; height: 14px; border-radius: 5px; display: inline-block; margin-bottom: 12px; }
 .mode-card h3 { margin-bottom: .3rem; }
@@ -208,15 +209,19 @@ img { max-width: 100%; display: block; }
 
 /* ---- Responsive ---- */
 @media (max-width: 760px) {
+  body { font-size: 16px; }
   .nav-links { position: fixed; inset: 66px 0 auto 0; flex-direction: column; align-items: flex-start; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px 20px 18px; transform: translateY(-120%); transition: transform .25s ease; box-shadow: var(--shadow); }
   .nav-links.open { transform: translateY(0); }
   .nav-links a { padding: 12px 0; width: 100%; font-size: 1.05rem; }
-  .nav-links .lang-toggle { margin-top: 8px; }
+  .nav-links .lang-toggle { margin-top: 8px; display: inline-block; width: auto; }
   .nav-toggle { display: inline-flex; }
-  .feature { grid-template-columns: 1fr; text-align: center; }
+  .feature { grid-template-columns: 1fr; gap: 14px; text-align: center; }
   .feature.reverse .feature-media { order: 0; }
-  .feature-media img, .feature-body .tag { margin-left: auto; margin-right: auto; }
+  .feature-media img { max-width: 220px; margin-left: auto; margin-right: auto; }
+  .feature-body .tag { margin-left: auto; margin-right: auto; }
   .feature-body { display: flex; flex-direction: column; align-items: center; }
-  .gallery img { height: 420px; }
+  .feature-body p { max-width: 42ch; }
+  .plus-perks { gap: 10px 20px; }
+  .grid > * { flex: 1 1 100%; max-width: 420px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
