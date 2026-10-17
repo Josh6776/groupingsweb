@@ -225,3 +225,11 @@ img { max-width: 100%; display: block; }
   .grid > * { flex: 1 1 100%; max-width: 420px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
+
+/* ---- Press kit ---- */
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 10px 22px; margin: 0 0 1.5rem; }
+.facts dt { font-family: var(--font-head); font-weight: 600; color: var(--fg); }
+.facts dd { margin: 0; color: var(--fg-muted); }
+.press-assets { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; margin: 1rem 0 1.5rem; }
+.press-assets img { width: 100%; border-radius: 14px; box-shadow: var(--shadow-sm); }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; gap: 2px; } .facts dd { margin-bottom: 10px; } }
