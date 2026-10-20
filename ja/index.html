@@ -51,6 +51,10 @@
     </div>
   </header>
 
+  <button class="whatsnew-bar" type="button" aria-haspopup="dialog" aria-controls="whatsnew">
+    <span>✨ 2.0の新機能</span><span class="pill">まもなく登場</span><span class="chev" aria-hidden="true">›</span>
+  </button>
+
   <section class="hero">
     <div class="wrap">
       <img class="hero-icon" src="../assets/img/app-icon.png" alt="Groupings アプリアイコン">
@@ -205,6 +209,46 @@
       </div>
     </div>
   </footer>
+
+  <!-- WHAT'S NEW SHEET -->
+  <dialog class="whatsnew-sheet" id="whatsnew" aria-labelledby="whatsnew-title">
+    <div class="whatsnew-head">
+      <div>
+        <h2 id="whatsnew-title">Groupings 2.0 の新機能</h2>
+        <p>これまでで最大のアップデート。まもなくApp Storeで登場します。</p>
+      </div>
+      <button class="whatsnew-close" type="button" aria-label="閉じる">✕</button>
+    </div>
+    <div class="whatsnew-body">
+      <h3>新モードが2つ</h3>
+      <ul>
+        <li><strong>サドンデス。</strong>ミスしたら即終了。トラップだらけのパズルで、獲得コインも最大級。</li>
+        <li><strong>ガントレット。</strong>初級から達人まで、ミス3回だけで駆け上がる試練。ステージが進むほど報酬もアップ。</li>
+      </ul>
+      <h3>実績機能</h3>
+      <ul>
+        <li>40種類以上の実績に加え、隠されたシークレット実績も。</li>
+        <li>全実績を解除すると特別な報酬がもらえます。</li>
+      </ul>
+      <h3>新しいデザイン</h3>
+      <ul>
+        <li>ライトモードとダークモードに対応した、明るいデザイン。</li>
+        <li>グループを揃えるたびに音程が上がる効果音と、完成時の紙吹雪。</li>
+        <li>不正解のタイルは赤く点滅し、勝利をしっかり演出します。</li>
+      </ul>
+      <h3>競う・シェアする</h3>
+      <ul>
+        <li>ブリッツ、エンドレス、サドンデス、ガントレットの4つのランキング。</li>
+        <li>答えが分からない画像で、プレイ結果をシェアできます。</li>
+      </ul>
+      <h3>遊ぶ理由がさらに増えました</h3>
+      <ul>
+        <li>毎週土日はコインが2倍。</li>
+        <li>連続記録やイベントをお知らせする通知(オプション)。</li>
+      </ul>
+    </div>
+  </dialog>
+
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

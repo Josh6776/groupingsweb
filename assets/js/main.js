@@ -19,3 +19,22 @@
     else if (/index\.html$|\/$|\.html$/.test(path)) localStorage.setItem('groupings_lang', 'en');
   } catch (e) {}
 })();
+
+// "What's new" sheet
+(function () {
+  var bar = document.querySelector('.whatsnew-bar');
+  var sheet = document.getElementById('whatsnew');
+  if (!bar || !sheet) return;
+  function open() {
+    if (typeof sheet.showModal === 'function') sheet.showModal(); else sheet.setAttribute('open', '');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    if (typeof sheet.close === 'function') sheet.close(); else sheet.removeAttribute('open');
+    document.body.style.overflow = '';
+  }
+  bar.addEventListener('click', open);
+  sheet.querySelector('.whatsnew-close').addEventListener('click', close);
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });   // click on the dimmed area
+  sheet.addEventListener('close', function () { document.body.style.overflow = ''; });
+})();

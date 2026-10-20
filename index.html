@@ -51,6 +51,10 @@
     </div>
   </header>
 
+  <button class="whatsnew-bar" type="button" aria-haspopup="dialog" aria-controls="whatsnew">
+    <span>✨ What's new in 2.0</span><span class="pill">Coming soon</span><span class="chev" aria-hidden="true">›</span>
+  </button>
+
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
@@ -212,6 +216,46 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- WHAT'S NEW SHEET -->
+  <dialog class="whatsnew-sheet" id="whatsnew" aria-labelledby="whatsnew-title">
+    <div class="whatsnew-head">
+      <div>
+        <h2 id="whatsnew-title">What's new in Groupings 2.0</h2>
+        <p>Our biggest update yet. Coming soon to the App Store.</p>
+      </div>
+      <button class="whatsnew-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="whatsnew-body">
+      <h3>Two new modes</h3>
+      <ul>
+        <li><strong>Sudden Death.</strong> One mistake and it's over. Trap-heavy puzzles with the biggest coin rewards.</li>
+        <li><strong>The Gauntlet.</strong> Climb from Easy to Expert with only three mistakes. Every stage pays more than the last.</li>
+      </ul>
+      <h3>Achievements</h3>
+      <ul>
+        <li>Over 40 achievements to unlock, plus secret ones to discover.</li>
+        <li>Unlock them all for a special reward.</li>
+      </ul>
+      <h3>A fresh look and feel</h3>
+      <ul>
+        <li>A brighter design in light and dark mode.</li>
+        <li>Rising chimes as you solve each group, and confetti when you finish.</li>
+        <li>Wrong guesses flash red, and wins get a proper celebration.</li>
+      </ul>
+      <h3>Compete and share</h3>
+      <ul>
+        <li>Leaderboards for Blitz, Endless, Sudden Death and The Gauntlet.</li>
+        <li>Share your result as a spoiler-free picture of your grid.</li>
+      </ul>
+      <h3>More reasons to play</h3>
+      <ul>
+        <li>Double coins every Saturday and Sunday.</li>
+        <li>Optional reminders for your streak and special events.</li>
+      </ul>
+    </div>
+  </dialog>
 
   <script src="assets/js/main.js"></script>
 </body>
