@@ -153,6 +153,8 @@ img { max-width: 100%; display: block; }
 .tag-levels  { color: var(--green);  background: color-mix(in srgb, var(--green) 15%, transparent); }
 .tag-blitz   { color: var(--orange); background: color-mix(in srgb, var(--orange) 18%, transparent); }
 .tag-endless { color: var(--blue);   background: color-mix(in srgb, var(--blue) 15%, transparent); }
+.tag-sudden  { color: #d93636;       background: color-mix(in srgb, #d93636 14%, transparent); }
+.tag-gauntlet{ color: var(--purple); background: color-mix(in srgb, var(--purple) 16%, transparent); }
 .tag-board   { color: var(--purple); background: color-mix(in srgb, var(--purple) 16%, transparent); }
 
 /* CSS phone frame (for raw JA screenshots) */
