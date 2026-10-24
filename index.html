@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Groupings | The honest daily word puzzle</title>
-  <meta name="description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, plus Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet and global leaderboards. Free on the App Store.">
+  <meta name="description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet, four themed puzzle packs and global leaderboards. Free on the App Store.">
   <link rel="canonical" href="https://groupingspuzzle.app/">
   <link rel="alternate" hreflang="en" href="https://groupingspuzzle.app/">
   <link rel="alternate" hreflang="ja" href="https://groupingspuzzle.app/ja/">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta property="og:title" content="Groupings | The honest daily word puzzle">
-  <meta property="og:description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, plus Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet and global leaderboards. Free on the App Store.">
+  <meta property="og:description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet, four themed puzzle packs and global leaderboards. Free on the App Store.">
   <meta property="og:url" content="https://groupingspuzzle.app/">
   <meta property="og:image" content="https://groupingspuzzle.app/assets/img/social-card-en.png">
   <meta property="og:image:width" content="1200">
@@ -21,9 +21,9 @@
   <meta property="og:image:alt" content="Groupings, one honest puzzle a day">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Groupings | The honest daily word puzzle">
-  <meta name="twitter:description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, plus Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet and global leaderboards. Free on the App Store.">
+  <meta name="twitter:description" content="Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet, four themed puzzle packs and global leaderboards. Free on the App Store.">
   <meta name="twitter:image" content="https://groupingspuzzle.app/assets/img/social-card-en.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Groupings: 4 Word Puzzle", "applicationCategory": "GameApplication", "operatingSystem": "iOS", "description": "Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, plus Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet and global leaderboards. Free on the App Store.", "url": "https://groupingspuzzle.app/", "image": "https://groupingspuzzle.app/assets/img/social-card-en.png", "installUrl": "https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009", "inLanguage": ["en", "ja"], "author": {"@type": "Person", "name": "Josh Bradley"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Groupings: 4 Word Puzzle", "applicationCategory": "GameApplication", "operatingSystem": "iOS", "description": "Groupings is a daily word grouping puzzle for iPhone. One honest puzzle a day, Easy to Expert practice, Blitz, Endless, Sudden Death, The Gauntlet, four themed puzzle packs and global leaderboards. Free on the App Store.", "url": "https://groupingspuzzle.app/", "image": "https://groupingspuzzle.app/assets/img/social-card-en.png", "installUrl": "https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009", "inLanguage": ["en", "ja"], "sameAs": ["https://www.tiktok.com/@groupings.4.word"], "author": {"@type": "Person", "name": "Josh Bradley"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
@@ -52,8 +52,13 @@
   </header>
 
   <button class="whatsnew-bar" type="button" aria-haspopup="dialog" aria-controls="whatsnew">
-    <span>✨ Groupings 2.0 is out now</span><span class="pill">What's new</span><span class="chev" aria-hidden="true">›</span>
+    <span>✨ Groupings 2.1 is out now</span><span class="pill">What's new</span><span class="chev" aria-hidden="true">›</span>
   </button>
+
+  <!-- WEEKEND DOUBLE COINS (shown on Saturdays and Sundays only, see main.js) -->
+  <div class="weekend-bar" id="weekend-bar" role="status" hidden>
+    <span aria-hidden="true">🪙</span><span>2x coins live in Groupings. Double coins all weekend!</span>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -162,6 +167,22 @@
     </div>
   </section>
 
+  <!-- PACKS -->
+  <section class="section">
+    <div class="wrap center">
+      <p class="eyebrow">New in 2.1</p>
+      <h2>Four themed puzzle packs</h2>
+      <p class="lead">50 puzzles in every genre. No lives needed, and every pack has one free try.</p>
+      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
+        <div class="mode-card"><span class="dot" style="background:#15803d"></span><h3>Sports Pack</h3><p>Football, badminton, volleyball, basketball and golf.</p></div>
+        <div class="mode-card"><span class="dot" style="background:#be185d"></span><h3>Retro Pack</h3><p>The 1980s, 1990s and 2000s.</p></div>
+        <div class="mode-card"><span class="dot" style="background:#4338ca"></span><h3>Music Pack</h3><p>Pop, rock and hip-hop &amp; R&amp;B.</p></div>
+        <div class="mode-card"><span class="dot" style="background:#b45309"></span><h3>Cinema Pack</h3><p>Animation, superheroes and blockbusters.</p></div>
+      </div>
+      <p class="lead" style="margin-top:26px;">Earn up to three stars on every puzzle. Unlock a pack with a one-time purchase or with coins, or invite five friends with your friend code and get one free.</p>
+    </div>
+  </section>
+
   <!-- PLUS -->
   <section class="section">
     <div class="wrap">
@@ -172,6 +193,8 @@
         <div class="plus-perks">
           <span>✦ No ads, ever</span>
           <span>✦ Unlimited lives</span>
+          <span>✦ Half-price hints and second chances</span>
+          <span>✦ Plus badge and special tile style</span>
           <span>✦ Restores across your devices</span>
         </div>
       </div>
@@ -215,6 +238,7 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="contact.html">Contact</a>
         <a href="press.html">Press</a>
+        <a href="https://www.tiktok.com/@groupings.4.word" target="_blank" rel="noopener me">TikTok</a>
         <a href="ja/index.html" lang="ja">日本語</a>
       </div>
     </div>
@@ -225,37 +249,36 @@
   <dialog class="whatsnew-sheet" id="whatsnew" aria-labelledby="whatsnew-title">
     <div class="whatsnew-head">
       <div>
-        <h2 id="whatsnew-title">What's new in Groupings 2.0</h2>
-        <p>Our biggest update yet. Available now on the App Store.</p>
+        <h2 id="whatsnew-title">What's new in Groupings 2.1</h2>
+        <p>Puzzle packs and friend codes. Available now on the App Store.</p>
       </div>
       <button class="whatsnew-close" type="button" aria-label="Close">✕</button>
     </div>
     <div class="whatsnew-body">
-      <h3>Two new modes</h3>
+      <h3>Four new puzzle packs</h3>
       <ul>
-        <li><strong>Sudden Death.</strong> One mistake and it's over. Trap-heavy puzzles with the biggest coin rewards.</li>
-        <li><strong>The Gauntlet.</strong> Climb from Easy to Expert with only three mistakes. Every stage pays more than the last.</li>
+        <li><strong>Sports.</strong> Football, badminton, volleyball, basketball and golf.</li>
+        <li><strong>Retro.</strong> The 1980s, 1990s and 2000s.</li>
+        <li><strong>Music.</strong> Pop, rock and hip-hop &amp; R&amp;B.</li>
+        <li><strong>Cinema.</strong> Animation, superheroes and blockbusters.</li>
+        <li>50 puzzles in every genre, up to three stars on each, and no lives needed.</li>
+        <li>One free try per pack. Unlock with a one-time purchase or with coins.</li>
       </ul>
-      <h3>Achievements</h3>
+      <h3>Invite friends, get coins</h3>
       <ul>
-        <li>Over 40 achievements to unlock, plus secret ones to discover.</li>
-        <li>Unlock them all for a special reward.</li>
+        <li>Share your friend code. You both get 100 coins when a new player uses it.</li>
+        <li>Your fifth friend unlocks a puzzle pack for free.</li>
       </ul>
-      <h3>A fresh look and feel</h3>
+      <h3>More to play for</h3>
       <ul>
-        <li>A brighter design in light and dark mode.</li>
-        <li>Rising chimes as you solve each group, and confetti when you finish.</li>
-        <li>Wrong guesses flash red, and wins get a proper celebration.</li>
+        <li>New achievements for puzzle packs.</li>
+        <li>Groupings Plus now also gives you half-price hints and second chances, a Plus badge on the leaderboards and a special tile style.</li>
       </ul>
-      <h3>Compete and share</h3>
+      <h3>Smoother play</h3>
       <ul>
-        <li>Leaderboards for Blitz, Endless, Sudden Death and The Gauntlet.</li>
-        <li>Share your result as a spoiler-free picture of your grid.</li>
-      </ul>
-      <h3>More reasons to play</h3>
-      <ul>
-        <li>Double coins every Saturday and Sunday.</li>
-        <li>Optional reminders for your streak and special events.</li>
+        <li>Longer words wrap neatly on the tiles.</li>
+        <li>Light and dark themes, new sounds, and a clear message when you reach the daily coin limit.</li>
+        <li>Report a bug straight from Settings.</li>
       </ul>
     </div>
   </dialog>

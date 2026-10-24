@@ -38,3 +38,11 @@
   sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });   // click on the dimmed area
   sheet.addEventListener('close', function () { document.body.style.overflow = ''; });
 })();
+
+// Double-coins banner: only on Saturdays and Sundays (the app pays double coins on those days)
+(function () {
+  var bar = document.getElementById('weekend-bar');
+  if (!bar) return;
+  var day = new Date().getDay();   // 0 = Sunday, 6 = Saturday, in the visitor's own time
+  if (day === 0 || day === 6) bar.hidden = false;
+})();

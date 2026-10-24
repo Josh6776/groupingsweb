@@ -260,3 +260,8 @@ img { max-width: 100%; display: block; }
   .whatsnew-sheet[open] { animation: sheet-up .3s ease; }
   @keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
 }
+
+/* Weekend double-coins banner (Saturdays and Sundays only) */
+.weekend-bar { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 10px 16px; font-weight: 700; font-size: .94rem; color: #3b2a00; background: linear-gradient(90deg, #f6b73c, #f9d36b); text-align: center; }
+.weekend-bar[hidden] { display: none; }
+@media (max-width: 640px) { .weekend-bar { font-size: .88rem; padding: 9px 12px; } }
