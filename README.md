@@ -1,6 +1,6 @@
 # groupingsweb
 
-Marketing website for the **Groupings** iOS app — a daily word grouping puzzle.
+Marketing website for the **Groupings** iOS app - a daily word grouping puzzle.
 Static HTML/CSS/JS, bilingual (English + 日本語).
 
 ## Structure
@@ -35,4 +35,4 @@ python3 -m http.server 8000
 
 ## Deployment
 
-Static site — host on GitHub Pages, Netlify, or Cloudflare Pages.
+Static site - host on GitHub Pages, Netlify, or Cloudflare Pages.
