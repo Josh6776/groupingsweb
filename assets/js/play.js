@@ -5,6 +5,17 @@
   var root = document.getElementById('game');
   if (!DATA || !root) return;
 
+  // "How to play" sheet (the page behind stops scrolling through CSS while the sheet is open)
+  (function () {
+    var sheet = document.getElementById('howto'), open = document.getElementById('howto-open');
+    if (!sheet || !open) return;
+    function show() { if (typeof sheet.showModal === 'function') sheet.showModal(); else sheet.setAttribute('open', ''); }
+    function hide() { if (typeof sheet.close === 'function') sheet.close(); else sheet.removeAttribute('open'); }
+    open.addEventListener('click', show);
+    sheet.querySelector('.whatsnew-close').addEventListener('click', hide);
+    sheet.addEventListener('click', function (e) { if (e.target === sheet) hide(); });   // tap on the dimmed area
+  })();
+
   var lang = document.documentElement.lang === 'ja' ? 'ja' : 'en';
   var STORE = 'https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009';
   var MAX_MISTAKES = 3;                 // daily, practice and endless
@@ -270,8 +281,8 @@
     for (var r = 0; r < S.remaining.length; r += 4) {
       html += '<div class="row">';
       S.remaining.slice(r, r + 4).forEach(function (w, i) {
-        var small = w.length > (lang === 'ja' ? 6 : 8);
-        html += '<button class="tile' + (small ? ' sm' : '') + (o.enter ? ' enter' : '') + '" type="button" style="--i:' + (r + i) + '" data-w="' + esc(w) + '" aria-pressed="' + (S.selected.indexOf(w) >= 0) + '">' + esc(w) + '</button>';
+        var small = lang === 'ja' && w.length > 6;
+        html += '<button class="tile' + (small ? ' sm' : '') + (o.enter ? ' enter' : '') + '" type="button" style="--i:' + (r + i) + ';--len:' + w.length + '" data-w="' + esc(w) + '" aria-pressed="' + (S.selected.indexOf(w) >= 0) + '">' + esc(w) + '</button>';
       });
       html += '</div>';
     }

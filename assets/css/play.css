@@ -64,12 +64,15 @@ button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 .board { display: grid; gap: 8px; }
 .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .tile {
-  appearance: none; border: 0; cursor: pointer; font: 700 clamp(.82rem, 3.4vw, 1.05rem) var(--font-head);
+  appearance: none; border: 0; cursor: pointer; font-family: var(--font-head); font-weight: 700;
+  /* the size follows the word's length and the tile's width, so long words fit whole instead of breaking */
+  font-size: clamp(.55rem, calc((min(100vw, 520px) - 56px) / 4 * .86 / (var(--len, 6) * .72)), 1.05rem);
   background: var(--tile); color: var(--tile-text); border-radius: 14px; min-height: 68px; padding: 6px 4px;
-  line-height: 1.15; word-break: break-word; hyphens: auto; letter-spacing: .01em;
+  line-height: 1.15; word-break: normal; overflow-wrap: normal; hyphens: none; letter-spacing: .01em;
   transition: transform .12s ease, background .12s ease; -webkit-tap-highlight-color: transparent;
 }
-.tile.sm { font-size: clamp(.68rem, 2.7vw, .9rem); }
+html[lang="ja"] .tile { font-size: clamp(.72rem, 3.4vw, 1rem); overflow-wrap: anywhere; }
+html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 .tile:hover { background: var(--tile-hi); }
 .tile[aria-pressed="true"] { background: var(--indigo); color: #fff; }
 .tile.pop { animation: pop .3s ease; }
@@ -108,9 +111,6 @@ button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 .cta-card p { margin: 0 0 12px; font-size: .95rem; }
 .cta-card .badge-appstore img { height: 48px; }
 
-.how { max-width: 620px; margin: 0 auto; padding: 0 20px 20px; }
-.how ol { color: var(--fg-muted); padding-left: 1.2rem; }
-.how li { margin-bottom: .45rem; }
 .noscript { text-align: center; padding: 30px 20px; }
 
 #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 80; }
@@ -138,3 +138,23 @@ button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 .bigscore { font: 800 3.6rem var(--font-head); line-height: 1; margin: .15em 0 .1em; }
 .newbest { color: var(--green); }
 .nums::-webkit-scrollbar { display: none; }
+
+/* "How to play" button and sheet */
+.howto {
+  display: inline-flex; align-items: center; gap: .5rem; margin: 6px 0 4px; padding: .5rem .9rem; cursor: pointer;
+  border: 1.5px solid var(--border); background: var(--card); color: var(--fg); border-radius: 10px; font: 600 .92rem var(--font-head);
+}
+.howto:hover { border-color: color-mix(in srgb, var(--indigo) 50%, var(--border)); }
+.howto .info {
+  width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid currentColor; display: inline-flex; align-items: center; justify-content: center;
+  font: 700 .7rem/1 var(--font-head); color: var(--fg-muted);
+}
+#howto .whatsnew-body { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+
+/* touch: no double-tap zoom delay, no text selection or callout on tiles, comfortable tap sizes */
+button { touch-action: manipulation; }
+.tile, .band { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.num { width: 44px; height: 44px; }
+.snd { min-height: 40px; }
+
+body:has(#howto[open]) { overflow: hidden; }

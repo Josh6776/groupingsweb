@@ -42,16 +42,44 @@
     <div class="wrap">
       <h1>ブラウザで無料プレイ</h1>
       <p class="lead">16個の言葉を、隠れた4つのグループに分けましょう。ダウンロード不要です。</p>
+      <button class="howto" type="button" id="howto-open" aria-haspopup="dialog">遊び方 <span class="info" aria-hidden="true">i</span></button>
     </div>
   </section>
 
   <main>
     <div class="game" id="game"><div class="noscript">このパズルにはJavaScriptが必要です。</div></div>
-    <section class="how">
-      <h2 style="font-size:1.4rem">遊び方</h2>
-      <ol><li>16個の言葉から、共通点のある4つを選びます。</li><li>「決定」を押して答え合わせ。正解するとグループが色付きで現れます。</li><li>ミスは3回まで。「あと1つ!」と出たら、3つは合っています。</li><li>色は、黄、緑、青、紫の順に難しくなります。</li><li>ブリッツ、エンドレス、サドンデスは連続プレイ。クリアしたグループの数がスコアです。</li></ol>
-    </section>
   </main>
+
+  <dialog class="whatsnew-sheet" id="howto" aria-labelledby="howto-title">
+    <div class="whatsnew-head">
+      <div>
+        <h2 id="howto-title">遊び方</h2>
+        <p>16個の言葉を、隠れた4つのグループに分けます。</p>
+      </div>
+      <button class="whatsnew-close" type="button" aria-label="閉じる">✕</button>
+    </div>
+    <div class="whatsnew-body">
+      <h3>基本ルール</h3>
+      <ul>
+        <li><strong>4つの言葉を選びます。</strong>共通点のある言葉を選んでください。</li>
+        <li><strong>「決定」を押します。</strong>正解すると、グループが色付きで現れます。</li>
+        <li><strong>ミスは3回まで。</strong>「あと1つ!」と出たら、4つのうち3つは合っています。</li>
+        <li>色は、黄(やさしい)から、緑、青、紫(むずかしい)の順に難しくなります。</li>
+      </ul>
+      <h3>モード</h3>
+      <ul>
+        <li><strong>デイリー。</strong>毎日1問、みんな同じパズルです。</li>
+        <li><strong>練習。</strong>初級・中級・上級・達人のパズルを順番に解けます。</li>
+        <li><strong>ブリッツ。</strong>制限時間は45秒。グループを見つけるたびに5秒追加、間違えると4秒減ります。</li>
+        <li><strong>エンドレス。</strong>パズルが次々に続き、ミスはラン全体で3回までです。</li>
+        <li><strong>サドンデス。</strong>ミスは1回で終了です。</li>
+      </ul>
+      <h3>スコア</h3>
+      <ul>
+        <li>ブリッツ、エンドレス、サドンデスでは、クリアしたグループの数がスコアです。ベストスコアはこのブラウザに保存されます。</li>
+      </ul>
+    </div>
+  </dialog>
 
   <canvas id="confetti" aria-hidden="true"></canvas>
 
