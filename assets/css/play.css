@@ -139,16 +139,15 @@ html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 .newbest { color: var(--green); }
 .nums::-webkit-scrollbar { display: none; }
 
-/* "How to play" button and sheet */
+/* "How to play": an info bar that opens the sheet */
 .howto {
-  display: inline-flex; align-items: center; gap: .5rem; margin: 6px 0 4px; padding: .5rem .9rem; cursor: pointer;
-  border: 1.5px solid var(--border); background: var(--card); color: var(--fg); border-radius: 10px; font: 600 .92rem var(--font-head);
+  display: inline-flex; align-items: center; gap: .6rem; margin: 8px 0 4px; padding: .4rem .45rem .4rem .95rem; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--indigo) 35%, var(--border)); background: color-mix(in srgb, var(--indigo) 9%, var(--card));
+  color: var(--fg); border-radius: 12px; font: 500 .92rem var(--font-body); max-width: 100%;
 }
-.howto:hover { border-color: color-mix(in srgb, var(--indigo) 50%, var(--border)); }
-.howto .info {
-  width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid currentColor; display: inline-flex; align-items: center; justify-content: center;
-  font: 700 .7rem/1 var(--font-head); color: var(--fg-muted);
-}
+.howto:hover { border-color: var(--indigo); }
+.howto-pill { background: var(--indigo); color: #fff; border-radius: 8px; padding: .3rem .7rem; font: 600 .82rem var(--font-head); white-space: nowrap; }
+.howto-chev { color: var(--fg-muted); font-size: 1.2rem; line-height: 1; padding-right: .35rem; }
 #howto .whatsnew-body { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 
 /* touch: no double-tap zoom delay, no text selection or callout on tiles, comfortable tap sizes */
