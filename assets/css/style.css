@@ -193,6 +193,8 @@ img { max-width: 100%; display: block; }
 .footer .brand { margin-bottom: 10px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
 .footer-links a { color: var(--fg-muted); font-size: .95rem; }
+
+.footer-nav { display: flex; flex-direction: column; gap: 10px; }
 .footer small { color: var(--fg-muted); display: block; margin-top: 14px; font-size: .86rem; }
 
 /* ---- Legal (terms / privacy) ---- */

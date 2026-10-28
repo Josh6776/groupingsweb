@@ -52,4 +52,16 @@
     <loc>https://groupingspuzzle.app/press.html</loc>
     <lastmod>2026-10-24</lastmod>
   </url>
+  <url>
+    <loc>https://groupingspuzzle.app/play.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://groupingspuzzle.app/play.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://groupingspuzzle.app/ja/play.html"/>
+  </url>
+  <url>
+    <loc>https://groupingspuzzle.app/ja/play.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://groupingspuzzle.app/play.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://groupingspuzzle.app/ja/play.html"/>
+  </url>
 </urlset>

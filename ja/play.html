@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Groupings | ブラウザで無料プレイ</title>
+  <meta name="description" content="Groupingsをブラウザで無料プレイ。16個の言葉を4つのグループに分けるパズルを、今日のパズルと8つのレベルで体験できます。アプリならもっと遊べます。">
+  <link rel="canonical" href="https://groupingspuzzle.app/ja/play.html">
+  <link rel="alternate" hreflang="en" href="https://groupingspuzzle.app/play.html">
+  <link rel="alternate" hreflang="ja" href="https://groupingspuzzle.app/ja/play.html">
+  <meta property="og:site_name" content="Groupings">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="Groupings | ブラウザで無料プレイ">
+  <meta property="og:description" content="Groupingsをブラウザで無料プレイ。16個の言葉を4つのグループに分けるパズルを、今日のパズルと8つのレベルで体験できます。アプリならもっと遊べます。">
+  <meta property="og:url" content="https://groupingspuzzle.app/ja/play.html">
+  <meta property="og:image" content="https://groupingspuzzle.app/assets/img/social-card-ja.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/play.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="../assets/img/app-icon.png" alt="Groupings icon"> Groupings</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html">ホーム</a><a href="play.html" class="active">ブラウザで遊ぶ</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="contact.html">お問い合わせ</a><a class="lang-toggle" href="../play.html" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="play-hero">
+    <div class="wrap">
+      <h1>ブラウザで無料プレイ</h1>
+      <p class="lead">16個の言葉を、隠れた4つのグループに分けましょう。ダウンロード不要です。</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="game" id="game"><div class="noscript">このパズルにはJavaScriptが必要です。</div></div>
+    <section class="how">
+      <h2 style="font-size:1.4rem">遊び方</h2>
+      <ol><li>16個の言葉から、共通点のある4つを選びます。</li><li>「決定」を押して答え合わせ。正解するとグループが色付きで現れます。</li><li>ミスは3回まで。「あと1つ!」と出たら、3つは合っています。</li><li>色は、黄、緑、青、紫の順に難しくなります。</li><li>ブリッツ、エンドレス、サドンデスは連続プレイ。クリアしたグループの数がスコアです。</li></ol>
+    </section>
+  </main>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div>
+        <a class="brand" href="index.html"><img src="../assets/img/app-icon.png" alt=""> Groupings</a>
+        <small>© 2026 Josh Bradley. iPhone向けの単語グループ分けパズル。<br>イギリス制作。</small>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-links">
+          <a href="index.html">ホーム</a>
+          <a href="play.html">ブラウザで遊ぶ</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="../index.html" lang="en">English</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@groupings.4.word" target="_blank" rel="noopener me">TikTok</a>
+          <a href="https://www.reddit.com/r/GroupingsPuzzle/" target="_blank" rel="noopener me">Reddit</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/play-data.js"></script>
+  <script src="../assets/js/play.js"></script>
+</body>
+</html>
