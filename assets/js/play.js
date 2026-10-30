@@ -13,6 +13,7 @@
     function hide() { if (typeof sheet.close === 'function') sheet.close(); else sheet.removeAttribute('open'); }
     open.addEventListener('click', show);
     sheet.querySelector('.whatsnew-close').addEventListener('click', hide);
+    var done = sheet.querySelector('.howto-done'); if (done) done.addEventListener('click', hide);
     sheet.addEventListener('click', function (e) { if (e.target === sheet) hide(); });   // tap on the dimmed area
   })();
 
