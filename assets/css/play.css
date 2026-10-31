@@ -2,15 +2,13 @@
    Groupings: play in the browser
    ============================================================ */
 :root {
-  --g0: #fcd040; --g1: #50c488; --g2: #50a4f8; --g3: #a878f4;   /* the four group colours, as in the app */
-  --ink: #1b1740;
-  --tile: #efeefb; --tile-hi: #dcd8fa; --tile-text: #1a1b25;
+  --g0: #f7c948; --g1: #34c58a; --g2: #5aa9f5; --g3: #9b8af2;   /* the four group colours, as in the app */
+  --ink: #1d1d1f;
+  --tile: color-mix(in srgb, var(--fg) 8%, var(--card)); --tile-hi: color-mix(in srgb, var(--fg) 13%, var(--card)); --tile-text: var(--fg);
 }
-:root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) { --tile: #26274a; --tile-hi: #3d3b86; --tile-text: #f2f3f9; } }
-:root[data-theme="dark"] { --tile: #26274a; --tile-hi: #3d3b86; --tile-text: #f2f3f9; }
 
 .play-hero { background: var(--bg-hero); padding: clamp(28px, 5vw, 48px) 0 8px; text-align: center; }
-.play-hero h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); max-width: 18ch; margin: 0 auto .35em; }
+.play-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; max-width: 18ch; margin: 0 auto .35em; }
 .play-hero .lead { margin: 0 auto 8px; font-size: 1.05rem; }
 
 .game { max-width: 520px; margin: 0 auto; padding: 8px 16px 40px; }
@@ -19,7 +17,7 @@
 [hidden] { display: none !important; }
 .modes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 14px 0 10px; }
 .mode {
-  grid-column: span 2; text-align: left; border: 1.5px solid var(--border); background: var(--card); color: var(--fg);
+  grid-column: span 2; text-align: left; border: 1px solid var(--hair); background: var(--card); color: var(--fg);
   border-radius: 14px; padding: 10px 11px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-height: 58px;
   transition: border-color .15s ease, background .15s ease;
 }
@@ -28,35 +26,35 @@
 .mode b { font: 700 .92rem var(--font-head); display: flex; align-items: center; gap: .45rem; line-height: 1.2; }
 .mode b i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
 .mode span { font-size: .74rem; color: var(--fg-muted); line-height: 1.25; }
-.mode:hover { border-color: color-mix(in srgb, var(--indigo) 50%, var(--border)); }
-.mode[aria-current="true"] { border-color: var(--indigo); background: color-mix(in srgb, var(--indigo) 12%, var(--card)); }
+.mode:hover { border-color: var(--fg-muted); }
+.mode[aria-current="true"] { border-color: var(--fg); box-shadow: 0 0 0 1px var(--fg); }
 @media (max-width: 440px) { .mode { padding: 9px 9px; } .mode b { font-size: .8rem; gap: .35rem; } .mode span { font-size: .68rem; } }
 .diffs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 0 10px; }
 .seg {
-  border: 1.5px solid var(--border); background: var(--card); color: var(--fg-muted); font: 600 .86rem var(--font-head);
+  border: 1px solid var(--hair); background: var(--card); color: var(--fg-muted); font: 600 .86rem var(--font-head);
   padding: .55rem .3rem; border-radius: 10px; cursor: pointer;
 }
-.seg[aria-current="true"] { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.seg[aria-current="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .nums { display: flex; gap: 6px; overflow-x: auto; padding: 2px 2px 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .num {
-  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--card);
+  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--hair); background: var(--card);
   color: var(--fg-muted); font: 600 .85rem var(--font-head); cursor: pointer; padding: 0;
 }
 .num.win { background: color-mix(in srgb, var(--g1) 30%, var(--card)); border-color: var(--g1); color: var(--fg); }
 .num.loss { border-color: #d93636; color: #d93636; }
-.num[aria-current="true"] { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.num[aria-current="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 button:focus { outline: none; }
 button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 
 .board-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 6px 2px 12px; min-height: 30px; }
 .diff { font: 600 .78rem var(--font-head); padding: .3rem .7rem; border-radius: 999px; color: var(--indigo); background: color-mix(in srgb, var(--indigo) 14%, transparent); }
-.diff.easy { color: var(--green); background: color-mix(in srgb, var(--green) 15%, transparent); }
-.diff.medium { color: var(--blue); background: color-mix(in srgb, var(--blue) 15%, transparent); }
-.diff.hard { color: var(--orange); background: color-mix(in srgb, var(--orange) 18%, transparent); }
-.diff.expert { color: #d93636; background: color-mix(in srgb, #d93636 14%, transparent); }
-.diff.run-blitz { color: var(--orange); background: color-mix(in srgb, var(--orange) 18%, transparent); }
-.diff.run-endless { color: var(--blue); background: color-mix(in srgb, var(--blue) 15%, transparent); }
-.diff.run-sudden { color: #d93636; background: color-mix(in srgb, #d93636 14%, transparent); }
+.diff.easy { color: color-mix(in srgb, var(--green) 60%, var(--fg)); background: color-mix(in srgb, var(--green) 15%, transparent); }
+.diff.medium { color: color-mix(in srgb, var(--blue) 65%, var(--fg)); background: color-mix(in srgb, var(--blue) 15%, transparent); }
+.diff.hard { color: var(--amber-ink); background: color-mix(in srgb, var(--orange) 18%, transparent); }
+.diff.expert { color: #b42318; background: color-mix(in srgb, #d93636 14%, transparent); }
+.diff.run-blitz { color: var(--amber-ink); background: color-mix(in srgb, var(--orange) 18%, transparent); }
+.diff.run-endless { color: color-mix(in srgb, var(--blue) 65%, var(--fg)); background: color-mix(in srgb, var(--blue) 15%, transparent); }
+.diff.run-sudden { color: #b42318; background: color-mix(in srgb, #d93636 14%, transparent); }
 .snd { border: 0; background: none; color: var(--fg-muted); font: 600 .85rem var(--font-body); cursor: pointer; padding: .3rem .5rem; border-radius: 8px; }
 .snd:hover { color: var(--fg); }
 
@@ -64,17 +62,18 @@ button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 .board { display: grid; gap: 8px; }
 .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .tile {
-  appearance: none; border: 0; cursor: pointer; font-family: var(--font-head); font-weight: 700;
+  appearance: none; border: 1px solid var(--hair); cursor: pointer; font-family: var(--font-head); font-weight: 600; text-transform: uppercase;
   /* the size follows the word's length and the tile's width, so long words fit whole instead of breaking */
   font-size: clamp(.55rem, calc((min(100vw, 520px) - 56px) / 4 * .86 / (var(--len, 6) * .72)), 1.05rem);
   background: var(--tile); color: var(--tile-text); border-radius: 14px; min-height: 68px; padding: 6px 4px;
   line-height: 1.15; word-break: normal; overflow-wrap: normal; hyphens: none; letter-spacing: .01em;
-  transition: transform .12s ease, background .12s ease; -webkit-tap-highlight-color: transparent;
+  transition: transform .22s var(--ease), background .22s var(--ease), color .22s var(--ease); -webkit-tap-highlight-color: transparent;
 }
 html[lang="ja"] .tile { font-size: clamp(.72rem, 3.4vw, 1rem); overflow-wrap: anywhere; }
 html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 .tile:hover { background: var(--tile-hi); }
-.tile[aria-pressed="true"] { background: var(--indigo); color: #fff; }
+.tile:active { transform: scale(.96); }
+.tile[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); transform: scale(.96); }
 .tile.pop { animation: pop .3s ease; }
 .tile.shake { animation: shake .45s ease; background: #e0566a; color: #fff; }
 .tile.enter { animation: enter .35s ease backwards; animation-delay: calc(var(--i, 0) * 18ms); }
@@ -94,7 +93,7 @@ html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 @keyframes band { from { opacity: 0; transform: scale(.85); } }
 
 .msg { text-align: center; min-height: 26px; margin: 12px 0 2px; font: 600 .95rem var(--font-head); color: var(--fg-muted); }
-.msg.good { color: var(--green); } .msg.bad { color: #d93636; }
+.msg.good { color: #12744f; } .msg.bad { color: #b42318; }
 .lives { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 4px 0 14px; font-size: .85rem; color: var(--fg-muted); }
 .lives i { width: 12px; height: 12px; border-radius: 50%; background: var(--fg); display: inline-block; transition: background .2s, transform .2s; }
 .lives i.gone { background: var(--border); transform: scale(.8); }
@@ -142,11 +141,11 @@ html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 /* "How to play": an info bar that opens the sheet */
 .howto {
   display: inline-flex; align-items: center; gap: .6rem; margin: 8px 0 4px; padding: .4rem .45rem .4rem .95rem; cursor: pointer;
-  border: 1px solid color-mix(in srgb, var(--indigo) 35%, var(--border)); background: color-mix(in srgb, var(--indigo) 9%, var(--card));
+  border: 1px solid var(--hair); background: var(--glass); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
   color: var(--fg); border-radius: 12px; font: 500 .92rem var(--font-body); max-width: 100%;
 }
 .howto:hover { border-color: var(--indigo); }
-.howto-pill { background: var(--indigo); color: #fff; border-radius: 8px; padding: .3rem .7rem; font: 600 .82rem var(--font-head); white-space: nowrap; }
+.howto-pill { background: var(--fg); color: var(--bg); border-radius: 8px; padding: .3rem .7rem; font: 600 .82rem var(--font-head); white-space: nowrap; }
 .howto-chev { color: var(--fg-muted); font-size: 1.2rem; line-height: 1; padding-right: .35rem; }
 #howto .whatsnew-body { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 
@@ -169,3 +168,7 @@ body:has(#howto[open]) { overflow: hidden; }
 #howto .whatsnew-head { flex: none; }
 .howto-foot { flex: none; padding: 12px 20px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); background: var(--card); }
 .howto-done { width: 100%; justify-content: center; }
+
+/* Dark mode: lift the tiles so they read clearly against the black canvas */
+:root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) { --tile: color-mix(in srgb, var(--fg) 17%, var(--card)); --tile-hi: color-mix(in srgb, var(--fg) 24%, var(--card)); } }
+:root[data-theme="dark"] { --tile: color-mix(in srgb, var(--fg) 17%, var(--card)); --tile-hi: color-mix(in srgb, var(--fg) 24%, var(--card)); }

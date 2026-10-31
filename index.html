@@ -28,10 +28,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261031j">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261101a">
+  <link rel="stylesheet" href="assets/css/home.css?v=20261101c">
 </head>
 <body>
   <!-- NAV -->
@@ -51,206 +49,180 @@
   </header>
 
   <button class="whatsnew-bar" type="button" aria-haspopup="dialog" aria-controls="whatsnew">
-    <span>✨ Groupings 2.2 is out now</span><span class="pill">What's new</span><span class="chev" aria-hidden="true">›</span>
+    <span>Groupings 2.2 is out now</span><span class="pill">What's new</span><span class="chev" aria-hidden="true">›</span>
   </button>
 
   <!-- WEEKEND DOUBLE COINS (shown on Saturdays and Sundays only, see main.js) -->
   <div class="weekend-bar" id="weekend-bar" role="status" hidden>
-    <span aria-hidden="true">🪙</span><span>2x coins live in Groupings. Double coins all weekend!</span>
+    <span>2x coins live in Groupings. Double coins all weekend!</span>
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="home-hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <img class="hero-icon" src="assets/img/app-icon.png" alt="Groupings app icon">
-      <h1>One honest puzzle a day</h1>
-      <p class="lead">The honest daily word puzzle. Just you and the grid, simple as that. Can you top the leaderboard?</p>
-      <div class="hero-cta">
-        <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="Download Groupings on the App Store">
-          <picture>
-            <source srcset="assets/img/appstore-badge-white.svg" media="(prefers-color-scheme: dark)">
-            <img src="assets/img/appstore-badge-black.svg" alt="Download on the App Store" width="168" height="56">
-          </picture>
-        </a>
-        <a class="btn btn-ghost" href="play.html">Play free in your browser</a>
+      <div>
+        <div class="tiles-mark" aria-hidden="true"><i style="background:var(--tile-0)"></i><i style="background:var(--tile-1)"></i><i style="background:var(--tile-2)"></i><i style="background:var(--tile-3)"></i></div>
+        <h1 id="hero-title"><span>Four hidden categories.</span><span>Sixteen words.</span><span class="dim">Zero subscriptions.</span></h1>
+        <p class="lede">One honest word puzzle a day for iPhone. Find the four groups, build your streak and climb the leaderboard.</p>
+        <div class="hero-cta">
+          <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="Download Groupings: 4 Word Puzzle on the App Store for iPhone">
+            <picture>
+              <source srcset="assets/img/appstore-badge-white.svg" media="(prefers-color-scheme: dark)">
+              <img src="assets/img/appstore-badge-black.svg" alt="" width="168" height="56">
+            </picture>
+          </a>
+          <a class="btn-text" href="play.html">Play free in your browser</a>
+        </div>
       </div>
-      <div class="hero-shot">
-        <img src="assets/img/screens-uk/groupings-01-home.webp" alt="Groupings home screen showing the daily puzzle" loading="lazy">
+
+      <div class="demo" id="demo" role="group" aria-label="Instant play demo">
+        <div class="demo-top">
+          <p class="label">Try it now</p>
+          <div class="demo-tools">
+            <button class="demo-tool" type="button" id="demo-sound" aria-pressed="false">Sound off</button>
+            <button class="demo-tool" type="button" id="demo-next">New grid</button>
+          </div>
+        </div>
+        <div class="demo-rows" id="demo-rows"></div>
+        <div class="demo-grid" id="demo-grid" aria-label="Sixteen word tiles. Select four that belong together."></div>
+        <div class="demo-status"><span id="demo-msg" role="status" aria-live="polite">Select four words that belong together.</span><span id="demo-count" aria-hidden="true"></span></div>
+        <noscript><p class="demo-foot">Turn on JavaScript to try a live grid, or <a href="play.html">play in your browser</a>.</p></noscript>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="section">
+  <!-- DEVICE STAGE -->
+  <section class="block" aria-labelledby="stage-title">
     <div class="wrap">
+      <p class="label">Ways to play</p>
+      <h2 id="stage-title">One grid. Seven ways to play it.</h2>
+      <p class="intro">From a calm daily solve to a head-to-head duel. Pick a mode and see it.</p>
 
-      <div class="feature">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-02-daily.webp" alt="The daily puzzle grid" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-daily">The Daily Puzzle</span>
-          <h2>A fresh grid, every day</h2>
-          <p>Each day brings a brand-new daily puzzle. Sort sixteen words into four hidden groups of four. Puzzles rotate every day and no two are ever the same.</p>
+      <div class="stage">
+        <div>
+          <div class="segmented" role="tablist" aria-label="Game modes" id="seg">
+            <button class="seg" role="tab" id="tab-daily" aria-controls="panel-daily" aria-selected="true">Daily</button>
+            <button class="seg" role="tab" id="tab-rush" aria-controls="panel-rush" aria-selected="false" tabindex="-1">Rush</button>
+            <button class="seg" role="tab" id="tab-gauntlet" aria-controls="panel-gauntlet" aria-selected="false" tabindex="-1">Gauntlet</button>
+            <button class="seg" role="tab" id="tab-sudden" aria-controls="panel-sudden" aria-selected="false" tabindex="-1">Sudden Death</button>
+            <button class="seg" role="tab" id="tab-blitz" aria-controls="panel-blitz" aria-selected="false" tabindex="-1">Blitz</button>
+            <button class="seg" role="tab" id="tab-endless" aria-controls="panel-endless" aria-selected="false" tabindex="-1">Endless</button>
+            <button class="seg" role="tab" id="tab-fog" aria-controls="panel-fog" aria-selected="false" tabindex="-1">Fog of War</button>
+          </div>
+
+          <div class="stage-copy">
+            <div class="stage-panel" role="tabpanel" id="panel-daily" aria-labelledby="tab-daily" data-active="true">
+              <h3>A fresh grid, every day</h3>
+              <p>Sort sixteen words into four hidden groups of four. Everyone gets the same puzzle, and a new one lands every day.</p>
+              <ul class="facts-list"><li><b>Rhythm</b>One puzzle a day</li><li><b>Reward</b>Build a streak, earn XP and coins</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-rush" aria-labelledby="tab-rush" aria-hidden="true">
+              <h3>Head to head for coins</h3>
+              <p>Pick a buy-in and play the same grid as another player. Fastest clean solve takes the pot.</p>
+              <ul class="facts-list"><li><b>Score</b>Your time, plus 10 seconds per mistake</li><li><b>Win</b>The lowest score wins the pot and climbs the Rush rating</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-gauntlet" aria-labelledby="tab-gauntlet" aria-hidden="true">
+              <h3>Easy start, brutal finish</h3>
+              <p>Climb from Easy all the way up to Expert across the stages of one run. Every stage pays more than the last.</p>
+              <ul class="facts-list"><li><b>Stages</b>Easy, Medium, Hard, Expert</li><li><b>Limit</b>Three mistakes for the whole run</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-sudden" aria-labelledby="tab-sudden" aria-hidden="true">
+              <h3>One slip and it's over</h3>
+              <p>No second chances. Trap-heavy puzzles, back to back, with some of the biggest coin rewards in the game.</p>
+              <ul class="facts-list"><li><b>Limit</b>A single mistake ends the run</li><li><b>Score</b>How many groups can you clear?</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-blitz" aria-labelledby="tab-blitz" aria-hidden="true">
+              <h3>Think you're fast?</h3>
+              <p>Race the clock. A right group earns more time, a wrong one burns it. How many can you clear before it runs out?</p>
+              <ul class="facts-list"><li><b>Clock</b>Countdown that you can extend</li><li><b>Board</b>Its own leaderboard</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-endless" aria-labelledby="tab-endless" aria-hidden="true">
+              <h3>It goes on, and on</h3>
+              <p>One grid after another with no finish line. Keep your lives alive and see just how far you can go.</p>
+              <ul class="facts-list"><li><b>Pace</b>Your own, no timer</li><li><b>Board</b>Its own leaderboard</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-fog" aria-labelledby="tab-fog" aria-hidden="true">
+              <h3>Can you see through the mist?</h3>
+              <p>Every word is hidden in the fog and you only see a hint of each. Peek at up to three tiles per grid.</p>
+              <ul class="facts-list"><li><b>Limit</b>Three mistakes for the whole run</li><li><b>Reward</b>Some of the biggest coin payouts in the game</li></ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-09-journey.webp" alt="Your journey with level rewards" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-journey">Levels</span>
-          <h2>Level up, earn rewards</h2>
-          <p>Every puzzle earns XP and every level pays out. Open your Journey to see what's next: coins, skips, streak lifelines and boosts, with an extra lane of rewards for Groupings Plus.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-03-expert.webp" alt="A puzzle with trap tiles" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-levels">Easy · Medium · Hard · Expert</span>
-          <h2>Play at your level</h2>
-          <p>New to grouping puzzles? Warm up on Easy, then climb through Medium, Hard and Expert as you sharpen up. And keep an eye out for the traps. They're probably not what you think.</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-04-blitz.webp" alt="Blitz mode with a countdown timer" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-blitz">Blitz</span>
-          <h2>Think you're fast?</h2>
-          <p>Race the clock in Blitz. Get a group right and earn more time; get it wrong and watch the seconds slip away. How many can you clear before time runs out?</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-05-endless.webp" alt="Endless mode" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-endless">Endless</span>
-          <h2>It goes on, and on, and on</h2>
-          <p>One grid after another with no finish line. Keep your lives alive and see just how far you can go.</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-06-sudden-death.webp" alt="Sudden Death mode with a single life" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-sudden">Sudden Death</span>
-          <h2>One slip and it's over</h2>
-          <p>No second chances. Make a single mistake and your run is done. Trap-heavy puzzles, back to back, and the biggest coin rewards in the game. How many groups can you clear?</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-07-gauntlet.webp" alt="The Gauntlet mode showing the current stage" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-gauntlet">The Gauntlet</span>
-          <h2>Easy start, brutal finish</h2>
-          <p>Climb through the stages from Easy all the way up to Expert, with only three mistakes to last the whole run. Every stage pays more than the last.</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-11-fog.webp" alt="Fog of War mode with hidden words" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-fog">Fog of War</span>
-          <h2>Can you see through the mist?</h2>
-          <p>Every word is hidden in the fog and you only see a hint of each. Peek at up to three tiles per grid, but you only get three mistakes for the whole run. It pays the biggest coin rewards in the game. How many groups can you clear?</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-10-rush.webp" alt="Choosing a buy-in for a Rush duel" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-rush">Rush</span>
-          <h2>Head to head for coins</h2>
-          <p>Pick a buy-in and play the same grid as another player. Your score is your time plus 10 seconds for every mistake, and the lowest score wins the pot. Win to climb the Rush rating and the Rush leaderboard.</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="assets/img/screens-uk/groupings-08-leaderboard.webp" alt="The global leaderboard" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-board">The Leaderboard</span>
-          <h2>Claim the top spot</h2>
-          <p>See where you rank. Blitz, Endless, Sudden Death, Gauntlet, Fog of War and Rush players compete on six separate boards. Can you reach the top spot, and more importantly, can you stay there?</p>
+
+        <div class="device" aria-live="off">
+          <div class="device-screen" id="device-screen">
+            <picture data-for="daily" data-active="true"><source type="image/webp" srcset="assets/img/stage-en/daily-320.webp 1x, assets/img/stage-en/daily-640.webp 2x"><img src="assets/img/stage-en/daily-640.webp" width="320" height="693" alt="Daily puzzle: a four by four grid of sixteen word tiles to sort into four hidden groups"></picture>
+            <picture data-for="rush"><source type="image/webp" srcset="assets/img/stage-en/rush-320.webp 1x, assets/img/stage-en/rush-640.webp 2x"><img src="assets/img/stage-en/rush-640.webp" width="320" height="693" alt="Rush duel: choosing a coin buy-in before playing the same grid as another player" loading="lazy"></picture>
+            <picture data-for="gauntlet"><source type="image/webp" srcset="assets/img/stage-en/gauntlet-320.webp 1x, assets/img/stage-en/gauntlet-640.webp 2x"><img src="assets/img/stage-en/gauntlet-640.webp" width="320" height="693" alt="The Gauntlet: a puzzle grid showing the current stage of the run" loading="lazy"></picture>
+            <picture data-for="sudden"><source type="image/webp" srcset="assets/img/stage-en/sudden-320.webp 1x, assets/img/stage-en/sudden-640.webp 2x"><img src="assets/img/stage-en/sudden-640.webp" width="320" height="693" alt="Sudden Death: a word grid with a single life remaining" loading="lazy"></picture>
+            <picture data-for="blitz"><source type="image/webp" srcset="assets/img/stage-en/blitz-320.webp 1x, assets/img/stage-en/blitz-640.webp 2x"><img src="assets/img/stage-en/blitz-640.webp" width="320" height="693" alt="Blitz: a word grid with a countdown timer above it" loading="lazy"></picture>
+            <picture data-for="endless"><source type="image/webp" srcset="assets/img/stage-en/endless-320.webp 1x, assets/img/stage-en/endless-640.webp 2x"><img src="assets/img/stage-en/endless-640.webp" width="320" height="693" alt="Endless: a word grid with lives shown and no finish line" loading="lazy"></picture>
+            <picture data-for="fog"><source type="image/webp" srcset="assets/img/stage-en/fog-320.webp 1x, assets/img/stage-en/fog-640.webp 2x"><img src="assets/img/stage-en/fog-640.webp" width="320" height="693" alt="Fog of War: word tiles hidden in mist with only a hint of each showing" loading="lazy"></picture>
+          </div>
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- MODES GRID -->
-  <section class="section section-soft">
-    <div class="wrap center">
-      <p class="eyebrow">Something for everyone</p>
-      <h2>Eight ways to play</h2>
-      <p class="lead">From a relaxed daily solve to a head-to-head duel.</p>
-      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
-        <div class="mode-card"><span class="dot" style="background:var(--indigo)"></span><h3>Daily</h3><p>One honest puzzle a day. Build your streak.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--green)"></span><h3>Practice</h3><p>Easy, Medium, Hard and Expert grids to train on.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--orange)"></span><h3>Blitz</h3><p>Beat the clock. Right answers buy you time.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--blue)"></span><h3>Endless</h3><p>How long can you last on your lives?</p></div>
-        <div class="mode-card"><span class="dot" style="background:#d93636"></span><h3>Sudden Death</h3><p>One mistake ends the run. The biggest payouts.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--purple)"></span><h3>The Gauntlet</h3><p>Easy start, brutal finish. Climb the stages.</p></div>
-        <div class="mode-card"><span class="dot" style="background:#64748b"></span><h3>Fog of War</h3><p>Words hidden in the mist. Peek if you dare.</p></div>
-        <div class="mode-card"><span class="dot" style="background:#c2185b"></span><h3>Rush</h3><p>Duel another player for coins.</p></div>
+      <div class="more">
+        <div><h3>Levels and the Journey</h3><p>Every puzzle earns XP and every level pays out, with coins, grid skips, streak lifelines and boosts along the way.</p></div>
+        <div><h3>Practice</h3><p>Easy, Medium, Hard and Expert grids to train on, with traps worth watching for.</p></div>
+        <div><h3>Puzzle packs</h3><p>Sports, Retro, Music and Cinema. Fifty puzzles each, with up to three stars on every one.</p></div>
+        <div><h3>Leaderboards</h3><p>Six separate boards for Blitz, Endless, Sudden Death, Gauntlet, Fog of War and Rush.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- NEW IN 2.2 -->
-  <section class="section">
-    <div class="wrap center">
-      <p class="eyebrow">New in 2.2</p>
-      <h2>Level up as you play</h2>
-      <p class="lead">Earn XP in every mode and collect rewards along your Journey.</p>
-      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
-        <div class="mode-card"><span class="dot" style="background:var(--indigo)"></span><h3>Levels and the Journey</h3><p>Every level pays coins, with bigger rewards at milestones.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--blue)"></span><h3>Grid skips</h3><p>Swap a grid you're stuck on in Endless, Sudden Death, Gauntlet and Fog of War.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--green)"></span><h3>Streak lifelines</h3><p>Missed a day? Save your streak.</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--orange)"></span><h3>2x boosts</h3><p>Double XP or double coins for 30 minutes.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKS -->
-  <section class="section">
-    <div class="wrap center">
-      <p class="eyebrow">Puzzle packs</p>
-      <h2>Four themed puzzle packs</h2>
-      <p class="lead">50 puzzles in every genre. No lives needed, and every pack has one free try.</p>
-      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
-        <div class="mode-card"><span class="dot" style="background:#15803d"></span><h3>Sports Pack</h3><p>Football, badminton, volleyball, basketball and golf.</p></div>
-        <div class="mode-card"><span class="dot" style="background:#be185d"></span><h3>Retro Pack</h3><p>The 1980s, 1990s and 2000s.</p></div>
-        <div class="mode-card"><span class="dot" style="background:#4338ca"></span><h3>Music Pack</h3><p>Pop, rock and hip-hop &amp; R&amp;B.</p></div>
-        <div class="mode-card"><span class="dot" style="background:#b45309"></span><h3>Cinema Pack</h3><p>Animation, superheroes and blockbusters.</p></div>
-      </div>
-      <p class="lead" style="margin-top:26px;">Earn up to three stars on every puzzle. Unlock a pack with a one-time purchase or with coins, or invite five friends with your friend code and get one free.</p>
-    </div>
-  </section>
-
-  <!-- PLUS -->
-  <section class="section">
+  <!-- HONEST APP GUARANTEE -->
+  <section class="block" aria-labelledby="honest-title">
     <div class="wrap">
-      <div class="plus">
-        <p class="eyebrow" style="color:#fff; opacity:.85">Groupings Plus</p>
-        <h2>Play your way, ad-free</h2>
-        <p>A single one-time purchase. No subscriptions.</p>
-        <div class="plus-perks">
-          <span>✦ No ads, ever</span>
-          <span>✦ Unlimited lives</span>
-          <span>✦ Half-price hints and second chances</span>
-          <span>✦ Double coins on every level reward</span>
-          <span>✦ 25% more XP and a bonus Journey lane</span>
-          <span>✦ Plus badge and special tile style</span>
-          <span>✦ Restores across your devices</span>
+      <div class="honest">
+        <div>
+          <p class="label amber">The honest app guarantee</p>
+          <h2 id="honest-title">Pay once. Play always.</h2>
+          <p class="intro">Groupings is free to play. If you want more, Groupings Plus is one payment, with no subscription to remember to cancel.</p>
+        </div>
+        <div class="compare">
+          <div class="panel muted">
+            <h3>Typical puzzle games</h3>
+            <ul>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>Weekly recurring subscriptions</li>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>Long forced video ads</li>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>Confusing coin stores</li>
+            </ul>
+          </div>
+          <div class="panel iap">
+            <div class="iap-head">
+              <img src="assets/img/app-icon.png" alt="" width="52" height="52">
+              <div><b>Groupings Plus</b><small>One-time purchase</small></div>
+              <div class="iap-price">£1.99<small>Once</small></div>
+            </div>
+            <ul>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>No subscription, ever</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>No ads</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>Unlimited lives</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>Double coins on level rewards, 25% more XP</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>Restores on your other devices</li>
+            </ul>
+            <div class="iap-foot">
+              <a class="btn" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009">Get Groupings</a>
+              <p>Price shown for the UK. Your App Store shows the price for your country. The free game shows occasional ads, and Plus removes them.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-soft cta-band">
-    <div class="wrap center">
-      <h2>Ready to play?</h2>
-      <p class="lead">Free to download. One honest puzzle is waiting.</p>
-      <div style="margin-top:22px;">
-        <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="Download Groupings on the App Store">
-          <picture>
-            <source srcset="assets/img/appstore-badge-white.svg" media="(prefers-color-scheme: dark)">
-            <img src="assets/img/appstore-badge-black.svg" alt="Download on the App Store" width="168" height="56">
-          </picture>
-        </a>
-      </div>
+  <!-- CLOSING -->
+  <section class="block closing" aria-labelledby="close-title">
+    <div class="wrap">
+      <h2 id="close-title">One honest puzzle is waiting.</h2>
+      <p class="intro">Free to download for iPhone.</p>
+      <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="Download Groupings: 4 Word Puzzle on the App Store for iPhone">
+        <picture>
+          <source srcset="assets/img/appstore-badge-white.svg" media="(prefers-color-scheme: dark)">
+          <img src="assets/img/appstore-badge-black.svg" alt="" width="168" height="56" loading="lazy">
+        </picture>
+      </a>
       <div style="margin-top:28px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:18px;">
         <a href="https://peerpush.com/p/groupings" target="_blank" rel="noopener">
           <img src="https://peerpush.com/p/groupings/badge.png" alt="Groupings on PeerPush" style="width: 230px; max-width: 100%;" loading="lazy">
@@ -295,7 +267,7 @@
         <h2 id="whatsnew-title">What's new in Groupings 2.2</h2>
         <p>Levels, Rush duels and Fog of War. Out now on the App Store.</p>
       </div>
-      <button class="whatsnew-close" type="button" aria-label="Close">✕</button>
+      <button class="whatsnew-close" type="button" aria-label="Close"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
     </div>
     <div class="whatsnew-body">
       <h3>Levels and the Journey</h3>
@@ -325,7 +297,9 @@
     </div>
   </dialog>
 
-  <script src="assets/js/main.js?v=20261031j"></script>
+  <script src="assets/js/hero-puzzles.js?v=20261101a"></script>
+  <script src="assets/js/hero.js?v=20261101a"></script>
+  <script src="assets/js/main.js?v=20261101a"></script>
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="JoshBradley" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </body>
 </html>

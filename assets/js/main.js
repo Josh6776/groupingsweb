@@ -20,23 +20,34 @@
   } catch (e) {}
 })();
 
-// "What's new" sheet
+// "What's new" sheet: focus trap, Escape to close, focus returns to the trigger
 (function () {
   var bar = document.querySelector('.whatsnew-bar');
   var sheet = document.getElementById('whatsnew');
   if (!bar || !sheet) return;
+  var FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
   function open() {
     if (typeof sheet.showModal === 'function') sheet.showModal(); else sheet.setAttribute('open', '');
     document.body.style.overflow = 'hidden';
+    var first = sheet.querySelector('.whatsnew-close'); if (first) first.focus();
   }
   function close() {
-    if (typeof sheet.close === 'function') sheet.close(); else sheet.removeAttribute('open');
-    document.body.style.overflow = '';
+    if (typeof sheet.close === 'function') sheet.close(); else { sheet.removeAttribute('open'); onClosed(); }
   }
+  function onClosed() { document.body.style.overflow = ''; bar.focus(); }
   bar.addEventListener('click', open);
   sheet.querySelector('.whatsnew-close').addEventListener('click', close);
   sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });   // click on the dimmed area
-  sheet.addEventListener('close', function () { document.body.style.overflow = ''; });
+  sheet.addEventListener('close', onClosed);
+  sheet.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key !== 'Tab') return;
+    var items = Array.prototype.filter.call(sheet.querySelectorAll(FOCUSABLE), function (el) { return el.offsetParent !== null; });
+    if (!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 })();
 
 // Double-coins banner: only on Saturdays and Sundays (the app pays double coins on those days)

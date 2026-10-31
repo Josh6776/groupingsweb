@@ -28,10 +28,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20261031j">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261101a">
+  <link rel="stylesheet" href="../assets/css/home.css?v=20261101c">
   <style>:root{--font-body:"Inter","Noto Sans JP",-apple-system,sans-serif;--font-head:"Poppins","Noto Sans JP",sans-serif;}</style>
 </head>
 <body>
@@ -51,179 +49,175 @@
   </header>
 
   <button class="whatsnew-bar" type="button" aria-haspopup="dialog" aria-controls="whatsnew">
-    <span>✨ Groupings 2.2 配信中</span><span class="pill">新機能</span><span class="chev" aria-hidden="true">›</span>
+    <span>Groupings 2.2 配信中</span><span class="pill">新機能</span><span class="chev" aria-hidden="true">›</span>
   </button>
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="home-hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <img class="hero-icon" src="../assets/img/app-icon.png" alt="Groupings アプリアイコン">
-      <h1>毎日ひとつ、正直なパズル</h1>
-      <p class="lead">シンプルな単語グループ分けパズル。あなたと16枚のタイルだけ。ランキングの頂点を目指せますか？</p>
-      <div class="hero-cta">
-        <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="App StoreでGroupingsをダウンロード">
-          <picture>
-            <source srcset="../assets/img/appstore-badge-ja-white.svg" media="(prefers-color-scheme: dark)">
-            <img src="../assets/img/appstore-badge-ja-black.svg" alt="App Storeでダウンロード" width="152" height="56">
-          </picture>
-        </a>
-        <a class="btn btn-ghost" href="play.html">ブラウザで無料プレイ</a>
+      <div>
+        <div class="tiles-mark" aria-hidden="true"><i style="background:var(--tile-0)"></i><i style="background:var(--tile-1)"></i><i style="background:var(--tile-2)"></i><i style="background:var(--tile-3)"></i></div>
+        <h1 id="hero-title"><span>隠れた4つのカテゴリー。</span><span>16個の言葉。</span><span class="dim">サブスクはゼロ。</span></h1>
+        <p class="lede">iPhone向けの、1日1問の正直な言葉パズル。4つのグループを見つけて、連続記録を伸ばし、ランキングを駆け上がろう。</p>
+        <div class="hero-cta">
+          <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="App StoreでGroupings: 4 Word Puzzleをダウンロード">
+            <picture>
+              <source srcset="../assets/img/appstore-badge-ja-white.svg" media="(prefers-color-scheme: dark)">
+              <img src="../assets/img/appstore-badge-ja-black.svg" alt="" width="152" height="56">
+            </picture>
+          </a>
+          <a class="btn-text" href="play.html">ブラウザで無料プレイ</a>
+        </div>
       </div>
-      <div class="hero-shot">
-        <img src="../assets/img/screens-ja/groupings-ja-01-home.webp" alt="Groupingsのホーム画面" loading="lazy">
+
+      <div class="demo" id="demo" role="group" aria-label="すぐ遊べるデモ">
+        <div class="demo-top">
+          <p class="label">今すぐ試す</p>
+          <div class="demo-tools">
+            <button class="demo-tool" type="button" id="demo-sound" aria-pressed="false">サウンド オフ</button>
+            <button class="demo-tool" type="button" id="demo-next">別のグリッド</button>
+          </div>
+        </div>
+        <div class="demo-rows" id="demo-rows"></div>
+        <div class="demo-grid" id="demo-grid" aria-label="16個の言葉のタイル。関連する4つを選んでください。"></div>
+        <div class="demo-status"><span id="demo-msg" role="status" aria-live="polite">関連する4つの言葉を選んでください。</span><span id="demo-count" aria-hidden="true"></span></div>
+        <noscript><p class="demo-foot">JavaScriptをオンにすると遊べます。または<a href="play.html">ブラウザでプレイ</a>。</p></noscript>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- DEVICE STAGE -->
+  <section class="block" aria-labelledby="stage-title">
     <div class="wrap">
+      <p class="label">遊び方</p>
+      <h2 id="stage-title">1つのグリッド。7つの遊び方。</h2>
+      <p class="intro">のんびりデイリーから、真剣勝負の対戦まで。モードを選んでのぞいてみよう。</p>
 
-      <div class="feature">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-02-daily.webp" alt="デイリーパズルのグリッド" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-daily">デイリーパズル</span>
-          <h2>毎日、新しいグリッド</h2>
-          <p>毎日あたらしいデイリーパズルが登場。16個の単語を、隠れた4つのグループに分けましょう。パズルは毎日入れ替わり、同じものは二度と出ません。</p>
+      <div class="stage">
+        <div>
+          <div class="segmented" role="tablist" aria-label="ゲームモード" id="seg">
+            <button class="seg" role="tab" id="tab-daily" aria-controls="panel-daily" aria-selected="true">デイリー</button>
+            <button class="seg" role="tab" id="tab-rush" aria-controls="panel-rush" aria-selected="false" tabindex="-1">Rush</button>
+            <button class="seg" role="tab" id="tab-gauntlet" aria-controls="panel-gauntlet" aria-selected="false" tabindex="-1">ガントレット</button>
+            <button class="seg" role="tab" id="tab-sudden" aria-controls="panel-sudden" aria-selected="false" tabindex="-1">サドンデス</button>
+            <button class="seg" role="tab" id="tab-blitz" aria-controls="panel-blitz" aria-selected="false" tabindex="-1">ブリッツ</button>
+            <button class="seg" role="tab" id="tab-endless" aria-controls="panel-endless" aria-selected="false" tabindex="-1">エンドレス</button>
+            <button class="seg" role="tab" id="tab-fog" aria-controls="panel-fog" aria-selected="false" tabindex="-1">フォグ・オブ・ウォー</button>
+          </div>
+
+          <div class="stage-copy">
+            <div class="stage-panel" role="tabpanel" id="panel-daily" aria-labelledby="tab-daily" data-active="true">
+              <h3>毎日、新しいグリッド</h3>
+              <p>16個の単語を、隠れた4つのグループに分けましょう。みんなが同じパズルに挑戦し、毎日新しいパズルが登場します。</p>
+              <ul class="facts-list"><li><b>ペース</b>1日1問</li><li><b>報酬</b>連続記録をのばして、XPとコインをゲット</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-rush" aria-labelledby="tab-rush" aria-hidden="true">
+              <h3>コインをかけて対決</h3>
+              <p>参加費を選んで、他のプレイヤーと同じグリッドで勝負。速くミスなく解いた人がポットを獲得します。</p>
+              <ul class="facts-list"><li><b>スコア</b>かかった時間に、ミス1回ごとに10秒を加算</li><li><b>勝利</b>スコアが低い人がポットを獲得し、Rushレーティングが上昇</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-gauntlet" aria-labelledby="tab-gauntlet" aria-hidden="true">
+              <h3>始まりは簡単、最後は過酷</h3>
+              <p>初級から達人まで、ステージごとに難しくなる挑戦。ステージが進むほど報酬もアップします。</p>
+              <ul class="facts-list"><li><b>ステージ</b>初級、中級、上級、達人</li><li><b>制限</b>ミスは全体で3回まで</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-sudden" aria-labelledby="tab-sudden" aria-hidden="true">
+              <h3>ミスしたら即終了</h3>
+              <p>やり直しはありません。トラップだらけのパズルが次々に登場し、報酬もゲーム内で最大級です。</p>
+              <ul class="facts-list"><li><b>制限</b>たった1回のミスで終了</li><li><b>スコア</b>何グループ解けますか？</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-blitz" aria-labelledby="tab-blitz" aria-hidden="true">
+              <h3>腕に自信はありますか？</h3>
+              <p>制限時間と勝負。正解すると時間が増え、間違えると減っていきます。時間切れまでにいくつ解けますか？</p>
+              <ul class="facts-list"><li><b>時間</b>延ばせるカウントダウン</li><li><b>ランキング</b>専用のランキング</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-endless" aria-labelledby="tab-endless" aria-hidden="true">
+              <h3>終わりなく、どこまでも</h3>
+              <p>ゴールのないグリッドが次々と続きます。ライフが尽きるまで、どこまで行けるか挑戦しましょう。</p>
+              <ul class="facts-list"><li><b>ペース</b>自分のペースで、タイマーなし</li><li><b>ランキング</b>専用のランキング</li></ul>
+            </div>
+            <div class="stage-panel" role="tabpanel" id="panel-fog" aria-labelledby="tab-fog" aria-hidden="true">
+              <h3>霧の向こうを見抜け</h3>
+              <p>言葉は霧に隠れ、ヒントしか見えません。1グリッドにつき最大3回までのぞけます。</p>
+              <ul class="facts-list"><li><b>制限</b>ミスは全体で3回まで</li><li><b>報酬</b>ゲーム最大級のコイン報酬</li></ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-09-journey.webp" alt="レベル報酬の旅の画面" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-journey">レベル</span>
-          <h2>レベルアップで報酬をゲット</h2>
-          <p>パズルを解くたびにXPがたまり、レベルが上がるたびに報酬がもらえます。旅を開いて、コイン、スキップ、連続の救済、ブーストなど次の報酬をチェック。Groupings Plusなら、特典のレーンがさらに加わります。</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-03-expert.webp" alt="トラップのあるパズル" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-levels">初級・中級・上級・達人</span>
-          <h2>あなたのレベルで</h2>
-          <p>パズルは初めてですか？初級でウォームアップして、中級・上級・達人へとステップアップ。トラップにもご注意を。見た目どおりとは限りません。</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-04-blitz.webp" alt="ブリッツモード" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-blitz">ブリッツ</span>
-          <h2>腕に自信はありますか？</h2>
-          <p>制限時間と勝負。グループを正解すると時間が増え、間違えると時間が減っていきます。時間切れまでにいくつ解けますか？</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-05-endless.webp" alt="エンドレスモード" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-endless">エンドレス</span>
-          <h2>終わりなく、どこまでも</h2>
-          <p>ゴールのないグリッドが次々と続きます。ライフが尽きるまで、どこまで行けるか挑戦しましょう。</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-06-sudden-death.webp" alt="サドンデスモード" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-sudden">サドンデス</span>
-          <h2>ミスしたら即終了</h2>
-          <p>やり直しはありません。たった1回のミスで終了です。トラップだらけのパズルが次々に登場し、報酬もゲーム内で最大級。何グループ解けるか挑戦しましょう。</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-07-gauntlet.webp" alt="ガントレットモードのステージ表示" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-gauntlet">ガントレット</span>
-          <h2>始まりは簡単、最後は過酷</h2>
-          <p>初級から達人まで、ステージごとに難しくなる挑戦。ミスは全体で3回まで。ステージが進むほど報酬もアップします。</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-11-fog.webp" alt="言葉が隠れたフォグ・オブ・ウォー" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-fog">フォグ・オブ・ウォー</span>
-          <h2>霧の向こうを見抜け</h2>
-          <p>言葉は霧に隠れ、ヒントしか見えません。1グリッドにつき最大3回までのぞけますが、ミスは全体で3回まで。報酬はゲーム最大級。いくつのグループをクリアできますか？</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-10-rush.webp" alt="Rush対戦の参加費選択画面" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-rush">Rush</span>
-          <h2>コインをかけて対決</h2>
-          <p>参加費を選んで、他のプレイヤーと同じグリッドで勝負。スコアは時間にミス1回ごとに10秒を足したもので、スコアが低い人がポットを獲得。勝ってレーティングとRushランキングを駆け上がろう。</p>
-        </div>
-      </div>
-      <div class="feature reverse">
-        <div class="feature-media"><img src="../assets/img/screens-ja/groupings-ja-08-leaderboard.webp" alt="ランキング画面" loading="lazy"></div>
-        <div class="feature-body">
-          <span class="tag tag-board">ランキング</span>
-          <h2>頂点を目指せ</h2>
-          <p>ブリッツ・エンドレス・サドンデス・ガントレット・フォグ・オブ・ウォー・Rushの6つのランキングで世界中のプレイヤーと勝負。1位になれますか？そして、その座を守れますか？</p>
+
+        <div class="device" aria-live="off">
+          <div class="device-screen" id="device-screen">
+            <picture data-for="daily" data-active="true"><source type="image/webp" srcset="../assets/img/stage-ja/daily-320.webp 1x, ../assets/img/stage-ja/daily-640.webp 2x"><img src="../assets/img/stage-ja/daily-640.webp" width="320" height="693" alt="デイリーパズル：16個の単語タイルが並ぶ4×4のグリッド"></picture>
+            <picture data-for="rush"><source type="image/webp" srcset="../assets/img/stage-ja/rush-320.webp 1x, ../assets/img/stage-ja/rush-640.webp 2x"><img src="../assets/img/stage-ja/rush-640.webp" width="320" height="693" alt="Rush対戦：他のプレイヤーと同じグリッドで遊ぶ前に、コインの参加費を選ぶ画面" loading="lazy"></picture>
+            <picture data-for="gauntlet"><source type="image/webp" srcset="../assets/img/stage-ja/gauntlet-320.webp 1x, ../assets/img/stage-ja/gauntlet-640.webp 2x"><img src="../assets/img/stage-ja/gauntlet-640.webp" width="320" height="693" alt="ガントレット：現在のステージを表示したパズルグリッド" loading="lazy"></picture>
+            <picture data-for="sudden"><source type="image/webp" srcset="../assets/img/stage-ja/sudden-320.webp 1x, ../assets/img/stage-ja/sudden-640.webp 2x"><img src="../assets/img/stage-ja/sudden-640.webp" width="320" height="693" alt="サドンデス：ライフが1つだけ残った単語グリッド" loading="lazy"></picture>
+            <picture data-for="blitz"><source type="image/webp" srcset="../assets/img/stage-ja/blitz-320.webp 1x, ../assets/img/stage-ja/blitz-640.webp 2x"><img src="../assets/img/stage-ja/blitz-640.webp" width="320" height="693" alt="ブリッツ：上にカウントダウンタイマーがある単語グリッド" loading="lazy"></picture>
+            <picture data-for="endless"><source type="image/webp" srcset="../assets/img/stage-ja/endless-320.webp 1x, ../assets/img/stage-ja/endless-640.webp 2x"><img src="../assets/img/stage-ja/endless-640.webp" width="320" height="693" alt="エンドレス：ライフを表示した、ゴールのない単語グリッド" loading="lazy"></picture>
+            <picture data-for="fog"><source type="image/webp" srcset="../assets/img/stage-ja/fog-320.webp 1x, ../assets/img/stage-ja/fog-640.webp 2x"><img src="../assets/img/stage-ja/fog-640.webp" width="320" height="693" alt="フォグ・オブ・ウォー：霧に隠れ、ヒントだけが見える単語タイル" loading="lazy"></picture>
+          </div>
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <section class="section section-soft">
-    <div class="wrap center">
-      <p class="eyebrow">いろいろな遊び方</p>
-      <h2>8つの遊び方</h2>
-      <p class="lead">のんびり解くデイリーから、1対1の対決まで。</p>
-      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
-        <div class="mode-card"><span class="dot" style="background:var(--indigo)"></span><h3>デイリー</h3><p>1日1問の正直なパズル。連続記録をのばそう。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--green)"></span><h3>練習モード</h3><p>初級・中級・上級・達人で腕を磨く。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--orange)"></span><h3>ブリッツ</h3><p>時間と勝負。正解で持ち時間アップ。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--blue)"></span><h3>エンドレス</h3><p>ライフが続く限り、どこまでも挑戦。</p></div>
-        <div class="mode-card"><span class="dot" style="background:#d93636"></span><h3>サドンデス</h3><p>ミスしたら即終了。報酬は最大級。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--purple)"></span><h3>ガントレット</h3><p>始まりは簡単、最後は過酷。ステージを駆け上がれ。</p></div>
-        <div class="mode-card"><span class="dot" style="background:#64748b"></span><h3>フォグ・オブ・ウォー</h3><p>霧に隠れた言葉。のぞくのは3回まで。</p></div>
-        <div class="mode-card"><span class="dot" style="background:#c2185b"></span><h3>Rush</h3><p>コインをかけて1対1で対決。</p></div>
+      <div class="more">
+        <div><h3>レベルと旅</h3><p>パズルを解くたびにXPがたまり、レベルアップごとにコイン、グリッドスキップ、連続の救済、ブーストがもらえます。</p></div>
+        <div><h3>練習</h3><p>初級・中級・上級・達人のグリッドで腕試し。トラップにもご注意を。</p></div>
+        <div><h3>パズルパック</h3><p>スポーツ、レトロ、ミュージック、シネマ。各50問、すべてのパズルで最大3つ星。</p></div>
+        <div><h3>ランキング</h3><p>ブリッツ、エンドレス、サドンデス、ガントレット、フォグ・オブ・ウォー、Rushの6つのランキング。</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap center">
-      <p class="eyebrow">2.2の新機能</p>
-      <h2>遊ぶほど成長する</h2>
-      <p class="lead">どのモードでもXPがたまり、旅の途中で報酬を集められます。</p>
-      <div class="grid" style="max-width:660px; margin:36px auto 0; text-align:left;">
-        <div class="mode-card"><span class="dot" style="background:var(--indigo)"></span><h3>レベルと旅</h3><p>レベルが上がるたびにコイン。節目にはさらに豪華な報酬。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--blue)"></span><h3>グリッドスキップ</h3><p>エンドレス、サドンデス、ガントレット、フォグ・オブ・ウォーで詰まったグリッドを交換。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--green)"></span><h3>連続の救済</h3><p>1日休んでも、連続記録を守れます。</p></div>
-        <div class="mode-card"><span class="dot" style="background:var(--orange)"></span><h3>2倍ブースト</h3><p>30分間、XP2倍またはコイン2倍。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
+  <!-- HONEST APP GUARANTEE -->
+  <section class="block" aria-labelledby="honest-title">
     <div class="wrap">
-      <div class="plus">
-        <p class="eyebrow" style="color:#fff; opacity:.85">Groupings Plus</p>
-        <h2>広告なしで、思いのままに</h2>
-        <p>買い切り ¥300。サブスクリプションはありません。</p>
-        <div class="plus-perks">
-          <span>✦ 広告なし</span>
-          <span>✦ ライフ無制限</span>
-          <span>✦ ヒントと2回目のチャンスが半額</span>
-          <span>✦ レベル報酬のコインが2倍</span>
-          <span>✦ XP25%アップと特別な報酬レーン</span>
-          <span>✦ Plusバッジと特別なタイルデザイン</span>
-          <span>✦ デバイス間で復元可能</span>
+      <div class="honest">
+        <div>
+          <p class="label amber">正直なアプリの約束</p>
+          <h2 id="honest-title">一度の支払いで、ずっと。</h2>
+          <p class="intro">Groupingsは無料で遊べます。もっと楽しみたい方には、買い切りのGroupings Plus。解約を忘れるサブスクリプションはありません。</p>
+        </div>
+        <div class="compare">
+          <div class="panel muted">
+            <h3>よくあるパズルゲーム</h3>
+            <ul>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>毎週課金されるサブスクリプション</li>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>長い強制動画広告</li>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>わかりにくいコインストア</li>
+            </ul>
+          </div>
+          <div class="panel iap">
+            <div class="iap-head">
+              <img src="../assets/img/app-icon.png" alt="" width="52" height="52">
+              <div><b>Groupings Plus</b><small>買い切り</small></div>
+              <div class="iap-price">¥300<small>1回のみ</small></div>
+            </div>
+            <ul>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>サブスクリプションなし</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>広告なし</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>ライフ無制限</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>レベル報酬のコイン2倍、XP25%アップ</li>
+              <li class="ok"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>他のデバイスでも復元可能</li>
+            </ul>
+            <div class="iap-foot">
+              <a class="btn" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009">Groupingsを入手</a>
+              <p>価格は日本のものです。お住まいの国のApp Storeにその国の価格が表示されます。無料版では時々広告が表示され、Plusで非表示にできます。</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-soft cta-band">
-    <div class="wrap center">
-      <h2>さあ、プレイしよう</h2>
-      <p class="lead">無料ダウンロード。正直なパズルが、あなたを待っています。</p>
-      <div style="margin-top:22px;">
-        <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="App StoreでGroupingsをダウンロード">
-          <picture>
-            <source srcset="../assets/img/appstore-badge-ja-white.svg" media="(prefers-color-scheme: dark)">
-            <img src="../assets/img/appstore-badge-ja-black.svg" alt="App Storeでダウンロード" width="152" height="56">
-          </picture>
-        </a>
-      </div>
+  <!-- CLOSING -->
+  <section class="block closing" aria-labelledby="close-title">
+    <div class="wrap">
+      <h2 id="close-title">正直なパズルが待っています。</h2>
+      <p class="intro">iPhone向けに無料でダウンロード。</p>
+      <a class="badge-appstore" href="https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009" aria-label="App StoreでGroupings: 4 Word Puzzleをダウンロード">
+        <picture>
+          <source srcset="../assets/img/appstore-badge-ja-white.svg" media="(prefers-color-scheme: dark)">
+          <img src="../assets/img/appstore-badge-ja-black.svg" alt="" width="152" height="56" loading="lazy">
+        </picture>
+      </a>
       <div style="margin-top:28px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:18px;">
         <a href="https://peerpush.com/p/groupings" target="_blank" rel="noopener">
           <img src="https://peerpush.com/p/groupings/badge.png" alt="Groupings on PeerPush" style="width: 230px; max-width: 100%;" loading="lazy">
@@ -265,7 +259,7 @@
         <h2 id="whatsnew-title">Groupings 2.2 の新機能</h2>
         <p>レベル、Rush対戦、フォグ・オブ・ウォー。App Storeで配信中です。</p>
       </div>
-      <button class="whatsnew-close" type="button" aria-label="閉じる">✕</button>
+      <button class="whatsnew-close" type="button" aria-label="閉じる"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
     </div>
     <div class="whatsnew-body">
       <h3>レベルと旅</h3>
@@ -295,7 +289,9 @@
     </div>
   </dialog>
 
-  <script src="../assets/js/main.js?v=20261031j"></script>
+  <script src="../assets/js/hero-puzzles.js?v=20261101a"></script>
+  <script src="../assets/js/hero.js?v=20261101a"></script>
+  <script src="../assets/js/main.js?v=20261101a"></script>
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="JoshBradley" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </body>
 </html>

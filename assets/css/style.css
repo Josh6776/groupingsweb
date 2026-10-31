@@ -9,55 +9,58 @@
   --green:  #1e9e6e;
   --blue:   #3b86de;
   --purple: #8370d8;
-  --indigo: #5b4fd9;   /* primary accent / links / "honest" */
+  --indigo: #5b4fd9;   /* primary accent / links */
   --indigo-ink: #4a3fc4;
+  --amber-ink: #b45309; /* text-safe amber on light surfaces */
 
-  /* Light theme surfaces */
-  --bg:        #ffffff;
-  --bg-soft:   #f5f4fd;
-  --bg-hero:   linear-gradient(180deg, #eeebfb 0%, #f7f6fe 60%, #ffffff 100%);
+  /* Light theme surfaces (Apple-style canvas) */
+  --bg:        #f5f5f7;
+  --bg-soft:   #ffffff;
+  --bg-hero:   #f5f5f7;
   --card:      #ffffff;
-  --border:    #e8e6f3;
-  --fg:        #1a1b25;
-  --fg-muted:  #5b5f70;
-  --shadow:    0 10px 30px rgba(44, 38, 92, 0.10);
-  --shadow-sm: 0 4px 14px rgba(44, 38, 92, 0.08);
+  --border:    rgba(0, 0, 0, 0.12);
+  --fg:        #1d1d1f;
+  --fg-muted:  #55555b;
+  --shadow:    0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.04);
 
   --radius:    18px;
   --radius-lg: 28px;
   --maxw:      1100px;
 
-  --font-head: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-head: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 :root:not([data-theme="light"]) {
   @media (prefers-color-scheme: dark) {
-    --bg:        #0f1016;
-    --bg-soft:   #16172099;
-    --bg-hero:   linear-gradient(180deg, #191a2e 0%, #121320 60%, #0f1016 100%);
-    --card:      #171826;
-    --border:    #272842;
-    --fg:        #f2f3f9;
-    --fg-muted:  #a7adc2;
-    --shadow:    0 12px 34px rgba(0, 0, 0, 0.45);
-    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --indigo:    #8b82f0;
-    --indigo-ink:#a79fff;
+    --bg:        #000000;
+    --bg-soft:   #1c1c1e;
+    --bg-hero:   #000000;
+    --card:      #1c1c1e;
+    --border:    rgba(255, 255, 255, 0.14);
+    --fg:        #f5f5f7;
+    --fg-muted:  #a1a1a6;
+    --shadow:    0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.4);
+    --indigo:    #9a92f5;
+    --indigo-ink:#b1abff;
+    --amber-ink: #f5b95a;
   }
 }
 :root[data-theme="dark"] {
-  --bg:        #0f1016;
-  --bg-soft:   #16172099;
-  --bg-hero:   linear-gradient(180deg, #191a2e 0%, #121320 60%, #0f1016 100%);
-  --card:      #171826;
-  --border:    #272842;
-  --fg:        #f2f3f9;
-  --fg-muted:  #a7adc2;
-  --shadow:    0 12px 34px rgba(0, 0, 0, 0.45);
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --indigo:    #8b82f0;
-  --indigo-ink:#a79fff;
+  --bg:        #000000;
+  --bg-soft:   #1c1c1e;
+  --bg-hero:   #000000;
+  --card:      #1c1c1e;
+  --border:    rgba(255, 255, 255, 0.14);
+  --fg:        #f5f5f7;
+  --fg-muted:  #a1a1a6;
+  --shadow:    0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.4);
+  --indigo:    #9a92f5;
+  --indigo-ink:#b1abff;
+  --amber-ink: #f5b95a;
 }
 
 /* ---- Base ---- */
@@ -73,7 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 .4em; }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; letter-spacing: -0.025em; margin: 0 0 .4em; }
 h1 { font-size: clamp(2.3rem, 6vw, 3.8rem); font-weight: 800; }
 h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 700; }
 h3 { font-size: 1.25rem; font-weight: 700; }
@@ -114,8 +117,8 @@ img { max-width: 100%; display: block; }
 .nav {
   position: sticky; top: 0; z-index: 50;
   background: color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter: saturate(160%) blur(12px);
-  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border);
 }
 .nav .wrap { display: flex; align-items: center; gap: 18px; height: 66px; }
@@ -301,3 +304,52 @@ img { max-width: 100%; display: block; }
 .coffee-note.show { opacity: 1; transform: none; }
 @media (max-width: 420px) { .coffee-note { padding: 0 14px; font-size: .88rem; } }
 @media (prefers-reduced-motion: reduce) { .coffee-note { transition: opacity .2s ease; transform: none; } }
+
+/* ---- Editorial refresh, shared by every page ---- */
+:root {
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --hair: var(--border);
+  --glass: color-mix(in srgb, var(--bg) 72%, transparent);
+  --surface: var(--card);
+}
+
+/* Small uppercase labels */
+.label, .eyebrow {
+  font-family: var(--font-head); font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--fg-muted); margin: 0 0 14px;
+}
+.label.amber { color: var(--amber-ink); }
+
+/* ---- Existing banners restyled ---- */
+.whatsnew-bar { background: var(--fg); color: var(--bg); font-weight: 600; }
+.whatsnew-bar .pill { background: color-mix(in srgb, var(--bg) 22%, transparent); letter-spacing: .02em; }
+.weekend-bar { background: #f7c948; color: #231a00; }
+.footer { background: var(--bg-soft); }
+.nav { border-bottom: 1px solid var(--hair); }
+.brand { letter-spacing: -0.02em; }
+.btn { box-shadow: none; }
+.btn:hover { box-shadow: none; transform: none; opacity: .9; }
+.btn-ghost { border: 1px solid var(--hair); }
+.badge-appstore { transition: opacity .2s var(--ease), transform .2s var(--ease); }
+.badge-appstore:hover { transform: none; opacity: .85; }
+.badge-appstore:active { transform: scale(.97); }
+.whatsnew-sheet { box-shadow: none; border: 1px solid var(--hair); background: color-mix(in srgb, var(--card) 92%, transparent); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.whatsnew-close { background: color-mix(in srgb, var(--fg) 10%, transparent); }
+
+/* Visible focus (WCAG 2.2 AA) */
+:where(a, button, [tabindex]):focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; border-radius: 8px; }
+.tile:focus-visible { outline-offset: 2px; }
+
+
+/* Legal pages, contact, press */
+.legal h1 { font-weight: 700; letter-spacing: -0.03em; }
+.legal h2 { border-top: 1px solid var(--hair); padding-top: 1.5rem; font-size: 1.25rem; letter-spacing: -0.02em; }
+.legal .updated { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; margin-bottom: 1.6rem; }
+.contact-card { border-radius: 22px; box-shadow: none; background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
+.contact-email { font-weight: 600; letter-spacing: -0.02em; }
+.facts { border-top: 1px solid var(--hair); gap: 0 22px; }
+.facts dt, .facts dd { padding: 11px 0; border-bottom: 1px solid var(--hair); }
+.press-assets img { box-shadow: none; border: 1px solid var(--hair); }
+.footer { border-top: 1px solid var(--hair); }
+h1 { letter-spacing: -0.03em; }
+html[lang="ja"] .label, html[lang="ja"] .eyebrow { letter-spacing: 0.04em; }
