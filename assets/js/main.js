@@ -47,24 +47,20 @@
   if (day === 0 || day === 6) bar.hidden = false;
 })();
 
-// A friendly note beside the Buy Me a Coffee button: shown once per visit, a moment after the page loads
+// A friendly note that slides out beside the Buy Me a Coffee button on every page load
 (function () {
-  try { if (sessionStorage.getItem('groupings_coffee_note')) return; } catch (e) {}
   var ja = document.documentElement.lang === 'ja';
   var note = document.createElement('div');
   note.className = 'coffee-note';
   note.setAttribute('role', 'status');
-  note.innerHTML = '<span></span><button type="button" aria-label="' + (ja ? '閉じる' : 'Close') + '">✕</button>';
-  note.firstChild.textContent = ja ? 'ご訪問ありがとうございます。応援はこちらから 🙂' : 'Thanks for visiting, support me here 🙂';
-  function remember() { try { sessionStorage.setItem('groupings_coffee_note', '1'); } catch (e) {} }
-  function hide() { note.classList.remove('show'); remember(); setTimeout(function () { if (note.parentNode) note.parentNode.removeChild(note); }, 400); }
-  note.querySelector('button').addEventListener('click', function (e) { e.stopPropagation(); hide(); });
-  note.firstChild.addEventListener('click', function () {   // tapping the note opens the coffee window
+  note.textContent = ja ? 'ご訪問ありがとうございます。応援はこちらから :)' : 'Thanks for visiting, support me here :)';
+  function hide() { note.classList.remove('show'); setTimeout(function () { if (note.parentNode) note.parentNode.removeChild(note); }, 500); }
+  note.addEventListener('click', function () {   // tapping it opens the coffee window
     var btn = document.getElementById('bmc-wbtn'); if (btn) btn.click(); hide();
   });
   setTimeout(function () {
     document.body.appendChild(note);
-    requestAnimationFrame(function () { note.classList.add('show'); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { note.classList.add('show'); }); });
     setTimeout(hide, 9000);
-  }, 1800);
+  }, 1500);
 })();
