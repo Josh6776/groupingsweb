@@ -1,4 +1,4 @@
-// Groupings in the browser: Daily, Practice (20+ puzzles at each difficulty), Blitz, Endless and Sudden Death,
+// Groupings in the browser: Daily, Practice (20+ puzzles at each difficulty), Blitz, Endless, Sudden Death and The Gauntlet,
 // with the same rules as the app.
 (function () {
   var DATA = window.GROUPINGS_PUZZLES;
@@ -19,46 +19,48 @@
 
   var lang = document.documentElement.lang === 'ja' ? 'ja' : 'en';
   var STORE = 'https://apps.apple.com/us/app/groupings-4-word-puzzle/id6804228009';
-  var MAX_MISTAKES = 3;                 // daily, practice and endless
+  var MAX_MISTAKES = 3;                 // daily, practice, endless and the gauntlet
   var BLITZ_START = 45, BLITZ_ADD = 5, BLITZ_PENALTY = 4;
   var REVEAL_MS = 1300;                 // pause on a finished grid in a run
   var EPOCH = Date.UTC(2026, 9, 28);    // daily #1 is 28 October 2026 (UTC)
   var DIFFS = ['easy', 'medium', 'hard', 'expert'];
-  var RUNS = ['blitz', 'endless', 'sudden'];
+  var RUNS = ['blitz', 'endless', 'sudden', 'gauntlet'];
   var MODES = [
     { id: 'daily', color: '#5b4fd9' }, { id: 'practice', color: '#1e9e6e' },
-    { id: 'blitz', color: '#efa230' }, { id: 'endless', color: '#3b86de' }, { id: 'sudden', color: '#d93636' }
+    { id: 'blitz', color: '#efa230' }, { id: 'endless', color: '#3b86de' }, { id: 'sudden', color: '#d93636' }, { id: 'gauntlet', color: '#c2418f' }
   ];
 
   var TXT = {
     en: {
-      modes: { daily: ['Daily', 'One a day'], practice: ['Practice', 'Easy to Expert'], blitz: ['Blitz', 'Beat the clock'], endless: ['Endless', '3 mistakes'], sudden: ['Sudden Death', 'One mistake'] },
+      modes: { daily: ['Daily', 'One a day'], practice: ['Practice', 'Easy to Expert'], blitz: ['Blitz', 'Beat the clock'], endless: ['Endless', '3 mistakes'], sudden: ['Sudden Death', 'One mistake'], gauntlet: ['The Gauntlet', 'Easy to Expert'] },
       submit: 'Submit', shuffle: 'Shuffle', deselect: 'Deselect all', mistakes: 'Mistakes left',
       oneAway: 'One away...', nope: 'Not a group. Try again.', already: 'You already tried that one.',
       pick: 'Pick four words that go together.', good: 'Nice! Keep going.', soundOn: 'Sound on', soundOff: 'Sound off',
-      won: 'You solved it!', lost: 'Out of mistakes', winSub: 'You found all four groups', lostSub: 'Here is what you were looking for',
+      stage: 'Stage', won: 'You solved it!', lost: 'Out of mistakes', winSub: 'You found all four groups', lostSub: 'Here is what you were looking for',
       next: 'Next puzzle', again: 'Play again', share: 'Share result', copied: 'Copied to your clipboard', puzzle: 'Puzzle',
       start: 'Start', cleared: 'Groups cleared', best: 'Best', newBest: 'New best!', timesUp: 'Time is up', runOver: 'Run over',
       intro: {
         blitz: 'You have 45 seconds. Every group you find adds 5 seconds. Every wrong guess costs 4. How many groups can you clear?',
         endless: 'Puzzle after puzzle with no finish line. You get 3 mistakes for the whole run. How far can you go?',
-        sudden: 'One mistake and your run is over. Tricky puzzles, back to back. How many groups can you clear?'
+        sudden: 'One mistake and your run is over. Tricky puzzles, back to back. How many groups can you clear?',
+        gauntlet: 'Start on an Easy grid and climb to Medium, Hard and then Expert. You get 3 mistakes for the whole run. How high can you climb?'
       },
       cta: 'Want more? The app has a fresh daily puzzle, Blitz, Endless, puzzle packs and global leaderboards.',
       diff: { easy: 'Easy', medium: 'Medium', hard: 'Hard', expert: 'Expert' }, dailyName: 'Daily puzzle'
     },
     ja: {
-      modes: { daily: ['デイリー', '毎日1問'], practice: ['練習', '初級〜達人'], blitz: ['ブリッツ', '時間との戦い'], endless: ['エンドレス', 'ミスは3回まで'], sudden: ['サドンデス', 'ミスは1回だけ'] },
+      modes: { daily: ['デイリー', '毎日1問'], practice: ['練習', '初級〜達人'], blitz: ['ブリッツ', '時間との戦い'], endless: ['エンドレス', 'ミスは3回まで'], sudden: ['サドンデス', 'ミスは1回だけ'], gauntlet: ['ガントレット', '初級から達人へ'] },
       submit: '決定', shuffle: 'シャッフル', deselect: '選択をリセット', mistakes: '残りミス',
       oneAway: 'あと1つ!', nope: 'グループではありません。', already: 'その組み合わせは試しました。',
       pick: '関連する4つの言葉を選んでください。', good: 'いいですね!その調子!', soundOn: 'サウンド オン', soundOff: 'サウンド オフ',
-      won: 'クリア!', lost: 'ミスの上限に達しました', winSub: '4つのグループをすべて見つけました', lostSub: '正解はこちらです',
+      stage: 'ステージ', won: 'クリア!', lost: 'ミスの上限に達しました', winSub: '4つのグループをすべて見つけました', lostSub: '正解はこちらです',
       next: '次のパズル', again: 'もう一度', share: '結果をシェア', copied: 'クリップボードにコピーしました', puzzle: 'パズル',
       start: 'スタート', cleared: 'クリアしたグループ', best: 'ベスト', newBest: '自己ベスト更新!', timesUp: 'タイムアップ', runOver: 'ゲームオーバー',
       intro: {
         blitz: '制限時間は45秒。グループを見つけるたびに5秒追加、間違えると4秒減ります。いくつクリアできるでしょう?',
         endless: 'パズルが次々に続きます。ミスは全体で3回まで。どこまで行けるでしょう?',
-        sudden: 'ミスは1回で終了。難しいパズルが続きます。いくつクリアできるでしょう?'
+        sudden: 'ミスは1回で終了。難しいパズルが続きます。いくつクリアできるでしょう?',
+        gauntlet: '初級から始まり、中級、上級、そして達人へと難しくなっていきます。ミスは全体で3回まで。どこまで登れるでしょう?'
       },
       cta: 'もっと遊びたい方へ。アプリでは毎日の新しいパズル、ブリッツ、エンドレス、パズルパック、世界ランキングが楽しめます。',
       diff: { easy: '初級', medium: '中級', hard: '上級', expert: '達人' }, dailyName: '今日のパズル'
@@ -151,7 +153,9 @@
   function best(mode) { try { return +localStorage.getItem('groupings_web_best_' + lang + '_' + mode) || 0; } catch (e) { return 0; } }
   function setBest(mode, v) { try { localStorage.setItem('groupings_web_best_' + lang + '_' + mode, String(v)); } catch (e) {} }
 
+  function stageDiff() { return DIFFS[Math.min(R ? R.puzzles : 0, DIFFS.length - 1)]; }   // The Gauntlet: easy, medium, hard, then expert
   function runPool(mode) {
+    if (mode === 'gauntlet') return puzzles.sets[stageDiff()];
     return mode === 'sudden' ? puzzles.sudden : puzzles.sets.medium.concat(puzzles.sets.hard, puzzles.sets.expert);
   }
   function pickRun(mode) {   // random, avoiding the last few served
@@ -169,7 +173,7 @@
           tried: {}, over: false, won: false, msg: TXT.pick, msgKind: '', busy: false };
   }
 
-  // mode: daily | practice | blitz | endless | sudden. For practice: diff and n (1-based).
+  // mode: daily | practice | blitz | endless | sudden | gauntlet. For practice: diff and n (1-based).
   function open(mode, diff, n) {
     stopTimer(); R = null;
     cur = { mode: mode, diff: diff || lastDiff, n: n || 0, puzzle: null };
@@ -242,6 +246,7 @@
     var d = $('diff'), label;
     if (cur.mode === 'daily') { d.className = 'diff ' + cur.puzzle.difficulty; label = TXT.dailyName + ' #' + (dayNumber + 1) + '  ·  ' + TXT.diff[cur.puzzle.difficulty]; }
     else if (cur.mode === 'practice') { d.className = 'diff ' + cur.diff; label = TXT.diff[cur.diff] + '  ·  ' + cur.n + ' / ' + puzzles.sets[cur.diff].length; }
+    else if (cur.mode === 'gauntlet' && R) { var sd = stageDiff(); d.className = 'diff ' + sd; label = TXT.modes.gauntlet[0] + '  ·  ' + TXT.stage + ' ' + (R.puzzles + 1) + '  ·  ' + TXT.diff[sd]; }
     else { d.className = 'diff run-' + cur.mode; label = TXT.modes[cur.mode][0]; }
     d.textContent = label;
     $('snd').textContent = soundOn ? '🔊 ' + TXT.soundOn : '🔇 ' + TXT.soundOff;
@@ -398,7 +403,7 @@
     setTimeout(function () {
       if (!R || R.over) return;
       var mistakes = S.mistakes; setPuzzle(pickRun(cur.mode)); S.mistakes = mistakes;
-      R.advancing = false; drawBoard({ enter: true }); drawStatus(); drawControls(); drawHud();
+      R.advancing = false; drawMeta(); drawBoard({ enter: true }); drawStatus(); drawControls(); drawHud();
     }, REVEAL_MS);
   }
   function endRun() {

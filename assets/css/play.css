@@ -21,7 +21,7 @@
   border-radius: 14px; padding: 10px 11px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-height: 58px;
   transition: border-color .15s ease, background .15s ease;
 }
-.mode.m-daily, .mode.m-practice { grid-column: span 3; }
+.mode { grid-column: span 3; }   /* two per row: Daily and Practice, then the four run modes */
 .mode { min-width: 0; }
 .mode b { font: 700 .92rem var(--font-head); display: flex; align-items: center; gap: .45rem; line-height: 1.2; }
 .mode b i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
@@ -54,6 +54,7 @@ button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 .diff.expert { color: #b42318; background: color-mix(in srgb, #d93636 14%, transparent); }
 .diff.run-blitz { color: var(--amber-ink); background: color-mix(in srgb, var(--orange) 18%, transparent); }
 .diff.run-endless { color: color-mix(in srgb, var(--blue) 65%, var(--fg)); background: color-mix(in srgb, var(--blue) 15%, transparent); }
+.diff.run-gauntlet { color: #a3307a; background: color-mix(in srgb, #c2418f 14%, transparent); }
 .diff.run-sudden { color: #b42318; background: color-mix(in srgb, #d93636 14%, transparent); }
 .snd { border: 0; background: none; color: var(--fg-muted); font: 600 .85rem var(--font-body); cursor: pointer; padding: .3rem .5rem; border-radius: 8px; }
 .snd:hover { color: var(--fg); }
