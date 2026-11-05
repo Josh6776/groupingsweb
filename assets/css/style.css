@@ -353,3 +353,45 @@ img { max-width: 100%; display: block; }
 .footer { border-top: 1px solid var(--hair); }
 h1 { letter-spacing: -0.03em; }
 html[lang="ja"] .label, html[lang="ja"] .eyebrow { letter-spacing: 0.04em; }
+
+/* ---- What's new sheet: its own fresh palette, light and dark (does not touch the rest of the site) ---- */
+.whatsnew-sheet {
+  --wn-accent: #0f766e; --wn-accent-soft: #e6f4f1; --wn-line: rgba(15, 23, 42, .08);
+  --wn-head: linear-gradient(180deg, #f0faf8 0%, transparent 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .whatsnew-sheet {
+    --wn-accent: #5eead4; --wn-accent-soft: rgba(94, 234, 212, .12); --wn-line: rgba(255, 255, 255, .09);
+    --wn-head: linear-gradient(180deg, rgba(94, 234, 212, .10) 0%, transparent 100%);
+  }
+}
+:root[data-theme="dark"] .whatsnew-sheet {
+  --wn-accent: #5eead4; --wn-accent-soft: rgba(94, 234, 212, .12); --wn-line: rgba(255, 255, 255, .09);
+  --wn-head: linear-gradient(180deg, rgba(94, 234, 212, .10) 0%, transparent 100%);
+}
+.whatsnew-sheet::backdrop { background: rgba(8, 10, 14, .55); }
+.whatsnew-sheet { border-color: var(--wn-line); }
+.whatsnew-head { background: var(--wn-head); border-bottom-color: var(--wn-line); }
+.whatsnew-head h2 { letter-spacing: -0.02em; }
+.whatsnew-close:hover { background: var(--wn-accent-soft); color: var(--wn-accent); }
+.whatsnew-body h3 {
+  display: flex; align-items: center; gap: 9px; margin: 22px 0 8px; color: var(--fg);
+  font-size: .95rem; font-weight: 700; letter-spacing: -0.01em;
+}
+.whatsnew-body h3::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--wn-accent); box-shadow: 0 0 0 4px var(--wn-accent-soft);
+}
+.whatsnew-body ul { list-style: none; padding-left: 17px; border-left: 2px solid var(--wn-line); margin-left: 3px; }
+.whatsnew-body li { padding-left: 4px; }
+.whatsnew-sheet :where(button):focus-visible { outline-color: var(--wn-accent); }
+
+/* ---- Contact card: same fresh accent as the What's new sheet, light and dark ---- */
+.contact-card { --ct-accent: #0f766e; --ct-ink: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .contact-card { --ct-accent: #5eead4; --ct-ink: #04201c; }
+}
+:root[data-theme="dark"] .contact-card { --ct-accent: #5eead4; --ct-ink: #04201c; }
+.contact-card .contact-email a { color: var(--ct-accent); }
+.contact-card .btn { background: var(--ct-accent); color: var(--ct-ink); }
+.contact-card :where(a, button):focus-visible { outline-color: var(--ct-accent); }
