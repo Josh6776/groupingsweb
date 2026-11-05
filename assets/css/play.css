@@ -35,14 +35,6 @@
   padding: .55rem .3rem; border-radius: 10px; cursor: pointer;
 }
 .seg[aria-current="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
-.nums { display: flex; gap: 6px; overflow-x: auto; padding: 2px 2px 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.num {
-  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--hair); background: var(--card);
-  color: var(--fg-muted); font: 600 .85rem var(--font-head); cursor: pointer; padding: 0;
-}
-.num.win { background: color-mix(in srgb, var(--g1) 30%, var(--card)); border-color: var(--g1); color: var(--fg); }
-.num.loss { border-color: #d93636; color: #d93636; }
-.num[aria-current="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 button:focus { outline: none; }
 button:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
 
@@ -137,7 +129,6 @@ html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 .bestline { font-size: .95rem; }
 .bigscore { font: 800 3.6rem var(--font-head); line-height: 1; margin: .15em 0 .1em; }
 .newbest { color: var(--green); }
-.nums::-webkit-scrollbar { display: none; }
 
 /* "How to play": an info bar that opens the sheet */
 .howto {
@@ -153,7 +144,6 @@ html[lang="ja"] .tile.sm { font-size: clamp(.64rem, 2.7vw, .85rem); }
 /* touch: no double-tap zoom delay, no text selection or callout on tiles, comfortable tap sizes */
 button { touch-action: manipulation; }
 .tile, .band { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.num { width: 44px; height: 44px; }
 .snd { min-height: 40px; }
 
 body:has(#howto[open]) { overflow: hidden; }

@@ -32,7 +32,7 @@
 
   var TXT = {
     en: {
-      modes: { daily: ['Daily', 'One a day'], practice: ['Practice', 'Easy to Expert'], blitz: ['Blitz', 'Beat the clock'], endless: ['Endless', '3 mistakes'], sudden: ['Sudden Death', 'One mistake'], gauntlet: ['The Gauntlet', 'Easy to Expert'] },
+      modes: { daily: ['Daily', 'One a day'], practice: ['Practice', 'Easy to Expert'], blitz: ['Blitz', 'Beat the clock'], endless: ['Endless', 'How long can you last?'], sudden: ['Sudden Death', 'One mistake'], gauntlet: ['The Gauntlet', 'Easy to Expert'] },
       submit: 'Submit', shuffle: 'Shuffle', deselect: 'Deselect all', mistakes: 'Mistakes left',
       oneAway: 'One away...', nope: 'Not a group. Try again.', already: 'You already tried that one.',
       pick: 'Pick four words that go together.', good: 'Nice! Keep going.', soundOn: 'Sound on', soundOff: 'Sound off',
@@ -49,7 +49,7 @@
       diff: { easy: 'Easy', medium: 'Medium', hard: 'Hard', expert: 'Expert' }, dailyName: 'Daily puzzle'
     },
     ja: {
-      modes: { daily: ['デイリー', '毎日1問'], practice: ['練習', '初級〜達人'], blitz: ['ブリッツ', '時間との戦い'], endless: ['エンドレス', 'ミスは3回まで'], sudden: ['サドンデス', 'ミスは1回だけ'], gauntlet: ['ガントレット', '初級から達人へ'] },
+      modes: { daily: ['デイリー', '毎日1問'], practice: ['練習', '初級〜達人'], blitz: ['ブリッツ', '時間との戦い'], endless: ['エンドレス', 'どこまで続く?'], sudden: ['サドンデス', 'ミスは1回だけ'], gauntlet: ['ガントレット', '初級から達人へ'] },
       submit: '決定', shuffle: 'シャッフル', deselect: '選択をリセット', mistakes: '残りミス',
       oneAway: 'あと1つ!', nope: 'グループではありません。', already: 'その組み合わせは試しました。',
       pick: '関連する4つの言葉を選んでください。', good: 'いいですね!その調子!', soundOn: 'サウンド オン', soundOff: 'サウンド オフ',
@@ -132,7 +132,6 @@
   root.innerHTML =
     '<div class="modes" id="modes"></div>' +
     '<div class="diffs" id="diffs"></div>' +
-    '<div class="nums" id="nums"></div>' +
     '<div class="board-meta"><span class="diff" id="diff"></span><button class="snd" id="snd" type="button"></button></div>' +
     '<div class="hud" id="hud"></div>' +
     '<div id="intro"></div>' +
@@ -144,7 +143,7 @@
   var $ = function (id) { return document.getElementById(id); };
 
   // ---- state ----
-  var cur, S, R = null, lastN = {}, lastDiff = 'easy', recent = [];
+  var cur, S, R = null, lastDiff = 'easy', recent = [];
   function seeded(seed) { var s = 0; for (var i = 0; i < seed.length; i++) s = (s * 31 + seed.charCodeAt(i)) >>> 0; return function () { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
   function shuffle(a, rnd) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -174,14 +173,22 @@
   }
 
   // mode: daily | practice | blitz | endless | sudden | gauntlet. For practice: diff and n (1-based).
-  function open(mode, diff, n) {
+  function open(mode, diff, fixed) {   // for practice, fixed replays that puzzle; otherwise a fresh random one
     stopTimer(); R = null;
-    cur = { mode: mode, diff: diff || lastDiff, n: n || 0, puzzle: null };
+    cur = { mode: mode, diff: diff || lastDiff, puzzle: null };
     S = null;
-    if (mode === 'daily') { cur.n = 0; setPuzzle(puzzles.daily[dailyIndex]); cur.key = 'daily'; }
-    else if (mode === 'practice') { lastDiff = cur.diff; cur.n = n || 1; setPuzzle(puzzles.sets[cur.diff][cur.n - 1]); cur.key = cur.diff + '-' + cur.n; }
+    if (mode === 'daily') { setPuzzle(puzzles.daily[dailyIndex]); cur.key = 'daily'; }
+    else if (mode === 'practice') { lastDiff = cur.diff; var pz = fixed || pickPractice(cur.diff); setPuzzle(pz); cur.key = pz.id; }
     else { S = { remaining: [], selected: [], solved: [], missed: [], mistakes: 0, tried: {}, over: false, won: false, msg: '', msgKind: '', busy: false }; cur.puzzle = runPool(mode)[0]; cur.key = mode; cur.intro = true; }
     drawAll(true);
+  }
+
+  function pickPractice(diff) {   // random puzzle at this difficulty, avoiding the ones served most recently
+    var pool = puzzles.sets[diff], blocked = recent.slice(-Math.max(1, Math.min(pool.length - 1, 20)));
+    var fresh = pool.filter(function (p) { return blocked.indexOf(p.id) < 0; }), from = fresh.length ? fresh : pool;
+    var c = from[Math.floor(Math.random() * from.length)];
+    recent.push(c.id); if (recent.length > 60) recent.shift();
+    return c;
   }
 
   function startRun() {
@@ -205,7 +212,7 @@
   }
 
   // ---- drawing ----
-  function drawAll(scrollToActive) { drawModes(); drawDiffs(); drawNums(scrollToActive); drawMeta(); drawHud(); drawIntro(); drawBoard({ enter: true }); drawStatus(); drawControls(); drawResult(); }
+  function drawAll(scrollToActive) { drawModes(); drawDiffs(); drawMeta(); drawHud(); drawIntro(); drawBoard({ enter: true }); drawStatus(); drawControls(); drawResult(); }
 
   function drawModes() {
     var done = loadDone(), html = '';
@@ -214,7 +221,7 @@
       html += '<button class="mode m-' + m.id + '" type="button" data-m="' + m.id + '" aria-current="' + (cur.mode === m.id) + '"><b><i style="background:' + m.color + '"></i>' + t[0] + tick + '</b><span>' + t[1] + '</span></button>';
     });
     $('modes').innerHTML = html;
-    $('modes').querySelectorAll('.mode').forEach(function (b) { b.onclick = function () { ctx(); var m = b.getAttribute('data-m'); open(m, lastDiff, m === 'practice' ? (lastN[lastDiff] || 1) : 0); }; });
+    $('modes').querySelectorAll('.mode').forEach(function (b) { b.onclick = function () { ctx(); var m = b.getAttribute('data-m'); open(m, lastDiff); }; });
   }
   function drawDiffs() {
     var box = $('diffs');
@@ -222,30 +229,12 @@
     box.hidden = false; var html = '';
     DIFFS.forEach(function (d) { html += '<button class="seg" type="button" data-d="' + d + '" aria-current="' + (cur.diff === d) + '">' + TXT.diff[d] + '</button>'; });
     box.innerHTML = html;
-    box.querySelectorAll('.seg').forEach(function (b) { b.onclick = function () { var d = b.getAttribute('data-d'); open('practice', d, lastN[d] || 1); }; });
-  }
-  function drawNums(scrollToActive) {
-    var nums = $('nums');
-    if (cur.mode !== 'practice') { nums.hidden = true; nums.innerHTML = ''; return; }
-    nums.hidden = false;
-    var done = loadDone(), html = '', list = puzzles.sets[cur.diff];
-    for (var i = 1; i <= list.length; i++) {
-      var st = done[cur.diff + '-' + i];
-      html += '<button class="num' + (st ? ' ' + st : '') + '" type="button" data-n="' + i + '" aria-label="' + TXT.puzzle + ' ' + i + '" aria-current="' + (cur.n === i) + '">' + i + '</button>';
-    }
-    nums.innerHTML = html;
-    nums.querySelectorAll('.num').forEach(function (b) { b.onclick = function () { open('practice', cur.diff, +b.getAttribute('data-n')); }; });
-    // start the row at the puzzle in play (puzzle 1 shows the start of the row)
-    var act = nums.querySelector('[aria-current="true"]');
-    if (scrollToActive && act) {
-      var a = act.getBoundingClientRect(), n = nums.getBoundingClientRect();
-      nums.scrollLeft = Math.max(0, nums.scrollLeft + (a.left - n.left) - 40);
-    }
+    box.querySelectorAll('.seg').forEach(function (b) { b.onclick = function () { var d = b.getAttribute('data-d'); open('practice', d); }; });
   }
   function drawMeta() {
     var d = $('diff'), label;
     if (cur.mode === 'daily') { d.className = 'diff ' + cur.puzzle.difficulty; label = TXT.dailyName + ' #' + (dayNumber + 1) + '  ·  ' + TXT.diff[cur.puzzle.difficulty]; }
-    else if (cur.mode === 'practice') { d.className = 'diff ' + cur.diff; label = TXT.diff[cur.diff] + '  ·  ' + cur.n + ' / ' + puzzles.sets[cur.diff].length; }
+    else if (cur.mode === 'practice') { d.className = 'diff ' + cur.diff; label = TXT.diff[cur.diff]; }
     else if (cur.mode === 'gauntlet' && R) { var sd = stageDiff(); d.className = 'diff ' + sd; label = TXT.modes.gauntlet[0] + '  ·  ' + TXT.stage + ' ' + (R.puzzles + 1) + '  ·  ' + TXT.diff[sd]; }
     else { d.className = 'diff run-' + cur.mode; label = TXT.modes[cur.mode][0]; }
     d.textContent = label;
@@ -325,9 +314,7 @@
   }
 
   function nextTarget() {   // daily and practice only
-    if (cur.mode === 'daily') return { m: 'practice', d: 'easy', n: 1 };
-    if (cur.n < puzzles.sets[cur.diff].length) return { m: 'practice', d: cur.diff, n: cur.n + 1 };
-    var i = DIFFS.indexOf(cur.diff); return i < DIFFS.length - 1 ? { m: 'practice', d: DIFFS[i + 1], n: 1 } : null;
+    return { m: 'practice', d: cur.mode === 'daily' ? 'easy' : cur.diff };   // a fresh random puzzle
   }
   var ctaHtml = function () { return '<div class="cta-card"><p>' + TXT.cta + '</p><a class="badge-appstore" href="' + STORE + '" aria-label="App Store"><img src="' + (lang === 'ja' ? '../' : '') + 'assets/img/appstore-badge-' + (lang === 'ja' ? 'ja-' : '') + 'black.svg" alt="App Store" width="168" height="56"></a></div>'; };
   function drawResult() {
@@ -349,8 +336,8 @@
       (nt ? '<button class="btn btn-ghost" id="next" type="button">' + TXT.next + '</button>' : '') +
       '<button class="btn btn-ghost" id="again" type="button">' + TXT.again + '</button></div>' + ctaHtml() + '</div>';
     $('share').onclick = function () { doShare($('share')); };
-    $('again').onclick = function () { open(cur.mode, cur.diff, cur.n); };
-    if (nt) $('next').onclick = function () { open(nt.m, nt.d, nt.n); scrollToTop(); };
+    $('again').onclick = function () { open(cur.mode, cur.diff, cur.mode === 'practice' ? cur.puzzle : undefined); };
+    if (nt) $('next').onclick = function () { open(nt.m, nt.d); scrollToTop(); };
   }
   function scrollToTop() { var m = $('modes'); if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 
@@ -421,11 +408,10 @@
     S.over = true; S.won = won; S.selected = [];
     if (!won) cur.puzzle.groups.forEach(function (g, i) { if (S.solved.indexOf(i) < 0) { S.solved.push(i); S.missed.push(i); } });
     S.remaining = [];
-    saveDone(cur.key, won ? 'win' : 'loss');
-    if (cur.mode === 'daily') saveDone('daily_date', String(dayNumber)); else lastN[cur.diff] = cur.n;
+    if (cur.mode === 'daily') saveDone('daily_date', String(dayNumber));
     S.msg = won ? TXT.won : TXT.lost; S.msgKind = won ? 'good' : 'bad';
     if (won) { sfx.win(); confetti(false); }
-    drawModes(); drawNums(false); drawBoard({ newBand: won ? lastBand : -1 }); drawStatus(); drawControls(); drawResult();
+    drawModes(); drawBoard({ newBand: won ? lastBand : -1 }); drawStatus(); drawControls(); drawResult();
   }
 
   function shareText() {
@@ -435,7 +421,7 @@
       return lang === 'ja' ? 'Groupings ' + name + 'で' + R.groups + 'グループをクリアしました!\nあなたはいくつ?\n' + url
                            : 'Groupings ' + name + ': I cleared ' + R.groups + (R.groups === 1 ? ' group.' : ' groups.') + '\nCan you beat it?\n' + url;
     }
-    var what = cur.mode === 'daily' ? TXT.dailyName + ' #' + (dayNumber + 1) : TXT.diff[cur.diff] + ' ' + cur.n;
+    var what = cur.mode === 'daily' ? TXT.dailyName + ' #' + (dayNumber + 1) : TXT.diff[cur.diff];
     if (lang === 'ja') return 'Groupings ' + what + (S.won ? 'をミス' + S.mistakes + '回でクリアしました!' : 'に挑戦しました。') + '\nあなたは解けますか?\n' + url;
     return 'Groupings ' + what + (S.won ? ': solved with ' + S.mistakes + (S.mistakes === 1 ? ' mistake.' : ' mistakes.') : ': I could not crack this one.') + '\nCan you do better?\n' + url;
   }
